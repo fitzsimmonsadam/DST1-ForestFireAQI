@@ -46,7 +46,7 @@ class AirQualityCollector:
         # If output_file is not provided, create one using the specified date range
         if output_file is None:
             self.output_file = (
-                f"Colorado_AQI_{start_date.strftime('%Y%m')}_"    #Used yearmonth for example but %Y%m%d gives full date range 
+                f"../data/Colorado_AQI_{start_date.strftime('%Y%m')}_"    #Used yearmonth for example but %Y%m%d gives full date range 
                 f"{end_date.strftime('%Y%m')}.csv"               # Can reconfigure based on preference
             )
         else:
@@ -56,7 +56,7 @@ class AirQualityCollector:
         
 
         logging.basicConfig(
-            filename="../../PythonProject/.venv/air_quality_data.log",
+            filename="../logs/air_quality_data.log",
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s"
         )
