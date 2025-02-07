@@ -3,6 +3,8 @@ import pandas as pd
 import time
 import logging
 from datetime import datetime, timedelta
+import os
+
 
 class AirQualityCollector:
     """
@@ -42,21 +44,27 @@ class AirQualityCollector:
         self.end_date = end_date
         self.batch_days = batch_days
         self.retry_limit = retry_limit
-        
+
+        # Set local directory paths
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        data_dir = os.path.abspath(os.path.join(script_dir, "../data"))
+        log_dir = os.path.abspath(os.path.join(script_dir, "../logs"))
+
         # If output_file is not provided, create one using the specified date range
         if output_file is None:
-            self.output_file = (
-                f"../data/Colorado_AQI_{start_date.strftime('%Y%m')}_"    #Used yearmonth for example but %Y%m%d gives full date range 
+            self.output_file = os.path.join(
+                data_dir, (
+                f"Colorado_AQI_{start_date.strftime('%Y%m')}_"    #Used yearmonth for example but %Y%m%d gives full date range 
                 f"{end_date.strftime('%Y%m')}.csv"               # Can reconfigure based on preference
-            )
+            ))
         else:
-            self.output_file = output_file
+            self.output_file = os.path.join(data_dir, output_file)
 
         self.all_data = []
         
 
         logging.basicConfig(
-            filename="../logs/air_quality_data.log",
+            filename=os.path.join(log_dir, "air_quality_data.log"),
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s"
         )
