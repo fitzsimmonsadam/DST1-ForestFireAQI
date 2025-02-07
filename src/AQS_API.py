@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import os
 
 
+
 class AirQualityCollector:
     """
     A class for collecting air quality data from the AirNow API.
@@ -49,17 +50,19 @@ class AirQualityCollector:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         data_dir = os.path.abspath(os.path.join(script_dir, "../data"))
         log_dir = os.path.abspath(os.path.join(script_dir, "../logs"))
+        print(f"Log directory for AQS_API: {log_dir}")
+        print(f"Data directory for AQS_API: {data_dir}")
 
         # If output_file is not provided, create one using the specified date range
         if output_file is None:
             self.output_file = os.path.join(
                 data_dir, (
-                f"Colorado_AQI_{start_date.strftime('%Y%m')}_"    #Used yearmonth for example but %Y%m%d gives full date range 
-                f"{end_date.strftime('%Y%m')}.csv"               # Can reconfigure based on preference
-            ))
+                    f"Colorado_AQI_{start_date.strftime('%Y%m')}_"  # Used yearmonth for example but %Y%m%d gives full date range 
+                    f"{end_date.strftime('%Y%m')}.csv"  # Can reconfigure based on preference
+                ))
         else:
             self.output_file = os.path.join(data_dir, output_file)
-
+        print(f"Output file for AQS_API: {self.output_file}")
         self.all_data = []
         
 
