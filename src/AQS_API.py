@@ -29,6 +29,7 @@ class AirQualityCollector:
         batch_days=10,                  # Retrieve data in 10 day increments, not sure of max batch size limit but must be <30
         retry_limit=3                   # Number of retries per request
     ):
+
         """
         Initialize the collector with API details and collection parameters.
         """
@@ -46,12 +47,10 @@ class AirQualityCollector:
         self.batch_days = batch_days
         self.retry_limit = retry_limit
 
-        # Set local directory paths
+        # Set local directory paths // AWF
         script_dir = os.path.dirname(os.path.abspath(__file__))
         data_dir = os.path.abspath(os.path.join(script_dir, "../data"))
         log_dir = os.path.abspath(os.path.join(script_dir, "../logs"))
-        print(f"Log directory for AQS_API: {log_dir}")
-        print(f"Data directory for AQS_API: {data_dir}")
 
         # If output_file is not provided, create one using the specified date range
         if output_file is None:
@@ -62,7 +61,6 @@ class AirQualityCollector:
                 ))
         else:
             self.output_file = os.path.join(data_dir, output_file)
-        print(f"Output file for AQS_API: {self.output_file}")
         self.all_data = []
         
 
