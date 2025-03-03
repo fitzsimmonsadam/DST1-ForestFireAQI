@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 
 src/config.json
+.DS_Store
