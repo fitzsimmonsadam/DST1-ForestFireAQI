@@ -6,6 +6,7 @@ import logging
 from typing import Optional, List
 from shapely.geometry import Point
 from datetime import date
+import matplotlib.pyplot as plt
 
 
 class BaseProcessor:
@@ -282,6 +283,7 @@ class AQIProcessor(BaseProcessor):
         self.logger.info(f"Saved combined AQI data to {combined_path}.")
 
 if __name__ == "__main__":
+    """
     # Paths and settings
     wildfire_csv = "data/wildfire_data/FIRMS_data/wildfire_data_sv_2019_2024.csv"
     aqi_csv = "data/aqi_data/Colorado_AQI_2019_2024.csv"
@@ -323,3 +325,46 @@ if __name__ == "__main__":
     ozone_df = df[df["Parameter"].str.upper() == "OZONE"]
     pm25_df.to_csv(f"pm25_aqi_{start_year}_{end_year}.csv", index=False)
     ozone_df.to_csv(f"ozone_aqi_{start_year}_{end_year}.csv", index=False)
+"""
+    # Load the PM2.5 AQI data
+    df = pd.read_csv("data/aqi_data/aqi_processed/pm25_aqi_2023_2024.csv")
+
+    # Ensure Date is datetime
+    df['Date'] = pd.to_datetime(df['Date'])
+
+    # Filter for 2023
+    df_2023 = df[df['Date'].dt.year == 2023].copy()
+    df_2023 = df_2023.sort_values('Date')
+
+    # Rolling 7-day average
+    df_2023['Rolling_AQI'] = df_2023['AQI'].rolling(window=7, min_periods=1).mean()
+
+    # Group by week and month
+    df_2023['Week'] = df_2023['Date'].dt.isocalendar().week
+    df_2023['Month'] = df_2023['Date'].dt.month
+
+    # Map month numbers to names
+    month_map = {
+        1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr',
+        5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug',
+        9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'
+    }
+    df_2023['Month_Name'] = df_2023['Month'].map(month_map)
+
+    # Get weekly averages
+    weekly_avg = df_2023.groupby(['Week', 'Month_Name'])['Rolling_AQI'].mean().reset_index()
+
+    # Plot
+    plt.figure(figsize=(14, 6))
+    plt.plot(weekly_avg['Week'], weekly_avg['Rolling_AQI'], marker='o')
+    plt.title('Weekly 7-Day Rolling Average AQI for PM2.5 in 2023')
+    plt.xlabel('Week Number')
+    plt.ylabel('Rolling 7-Day Average AQI')
+
+    # Map the x-ticks (weeks) to the corresponding month names
+    week_labels = weekly_avg['Month_Name']
+    plt.xticks(ticks=weekly_avg['Week'], labels=week_labels, rotation=45)
+
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()

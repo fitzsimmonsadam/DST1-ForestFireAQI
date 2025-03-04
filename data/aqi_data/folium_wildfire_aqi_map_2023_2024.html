@@ -1,0 +1,3452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_411b3e8dae92850409f4476facc0caa4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_411b3e8dae92850409f4476facc0caa4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_411b3e8dae92850409f4476facc0caa4 = L.map(
+                "map_411b3e8dae92850409f4476facc0caa4",
+                {
+                    center: [39.0, -105.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5c929435232255a03758a1ade97eb10c = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5c929435232255a03758a1ade97eb10c.addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+            var marker_68652d28a12c8e14395eaa4ab45a1eab = L.marker(
+                [40.8156, -102.1687],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_48062deb722d80d9c848963c0017c9a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e90c2cae04bc3acfef3a7d714c54bdbc = $(`<div id="html_e90c2cae04bc3acfef3a7d714c54bdbc" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Sedgwick<br>                 <strong>Date:</strong> 2023-08-03 00:00:00<br>                 <strong>Confidence:</strong> 55<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_48062deb722d80d9c848963c0017c9a2.setContent(html_e90c2cae04bc3acfef3a7d714c54bdbc);
+            
+        
+
+        marker_68652d28a12c8e14395eaa4ab45a1eab.bindPopup(popup_48062deb722d80d9c848963c0017c9a2)
+        ;
+
+        
+    
+    
+            marker_68652d28a12c8e14395eaa4ab45a1eab.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-03 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d18ba407710c1a93c99eb08c6ac81e71 = L.marker(
+                [37.2576, -107.3808],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_693d6780fdc63480dfbc332e91879aec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a16a3615d740e137d09fcaa1140c0b4d = $(`<div id="html_a16a3615d740e137d09fcaa1140c0b4d" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-05 00:00:00<br>                 <strong>Confidence:</strong> 62<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_693d6780fdc63480dfbc332e91879aec.setContent(html_a16a3615d740e137d09fcaa1140c0b4d);
+            
+        
+
+        marker_d18ba407710c1a93c99eb08c6ac81e71.bindPopup(popup_693d6780fdc63480dfbc332e91879aec)
+        ;
+
+        
+    
+    
+            marker_d18ba407710c1a93c99eb08c6ac81e71.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-05 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4a573a48f5be7bbfad0969539a8dcfb3 = L.marker(
+                [38.648, -108.3463],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_7eeb6cd0d091d716e8ccdf97a4fe8491 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2fb28d57d7dd535d4eca9c17b59e470a = $(`<div id="html_2fb28d57d7dd535d4eca9c17b59e470a" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 72<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_7eeb6cd0d091d716e8ccdf97a4fe8491.setContent(html_2fb28d57d7dd535d4eca9c17b59e470a);
+            
+        
+
+        marker_4a573a48f5be7bbfad0969539a8dcfb3.bindPopup(popup_7eeb6cd0d091d716e8ccdf97a4fe8491)
+        ;
+
+        
+    
+    
+            marker_4a573a48f5be7bbfad0969539a8dcfb3.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b1a69d8722653c71508b30edcd38cdc4 = L.marker(
+                [37.3544, -106.805],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_8175c379b6b77fffe51385d0d6e7441b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eb8fc5d3258a6b488a83b012f2d99b5d = $(`<div id="html_eb8fc5d3258a6b488a83b012f2d99b5d" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 93<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_8175c379b6b77fffe51385d0d6e7441b.setContent(html_eb8fc5d3258a6b488a83b012f2d99b5d);
+            
+        
+
+        marker_b1a69d8722653c71508b30edcd38cdc4.bindPopup(popup_8175c379b6b77fffe51385d0d6e7441b)
+        ;
+
+        
+    
+    
+            marker_b1a69d8722653c71508b30edcd38cdc4.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e0517dba473a6bedd814c3458ac8cea6 = L.marker(
+                [37.2607, -107.3824],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ca97f94827fb497692323f4f7ecf3423 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ffa61bce5ae39fec0f6134fee6414148 = $(`<div id="html_ffa61bce5ae39fec0f6134fee6414148" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 57<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ca97f94827fb497692323f4f7ecf3423.setContent(html_ffa61bce5ae39fec0f6134fee6414148);
+            
+        
+
+        marker_e0517dba473a6bedd814c3458ac8cea6.bindPopup(popup_ca97f94827fb497692323f4f7ecf3423)
+        ;
+
+        
+    
+    
+            marker_e0517dba473a6bedd814c3458ac8cea6.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a67dceaca919fe793485a04774a0e0c4 = L.marker(
+                [37.268, -107.3997],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_95920de2caa1a274d86f7ee69ed3eccd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_642a603566dc80f0c03d82c7f778b395 = $(`<div id="html_642a603566dc80f0c03d82c7f778b395" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 34<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_95920de2caa1a274d86f7ee69ed3eccd.setContent(html_642a603566dc80f0c03d82c7f778b395);
+            
+        
+
+        marker_a67dceaca919fe793485a04774a0e0c4.bindPopup(popup_95920de2caa1a274d86f7ee69ed3eccd)
+        ;
+
+        
+    
+    
+            marker_a67dceaca919fe793485a04774a0e0c4.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_affa243d00fbda415de9bc4b33563da5 = L.marker(
+                [38.7265, -107.0633],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_82469352cbe6780895a3c252b6db008b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6fd5d3525b62d8843f3a59ecab9271b3 = $(`<div id="html_6fd5d3525b62d8843f3a59ecab9271b3" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Gunnison<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_82469352cbe6780895a3c252b6db008b.setContent(html_6fd5d3525b62d8843f3a59ecab9271b3);
+            
+        
+
+        marker_affa243d00fbda415de9bc4b33563da5.bindPopup(popup_82469352cbe6780895a3c252b6db008b)
+        ;
+
+        
+    
+    
+            marker_affa243d00fbda415de9bc4b33563da5.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_11e2e87980332e7e8817709b54f295c3 = L.marker(
+                [38.7242, -107.0763],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_07d0371c7248a629b31d4ce8a665bb78 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_279cab387beb4bcd56cbf914b12654cc = $(`<div id="html_279cab387beb4bcd56cbf914b12654cc" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Gunnison<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 80<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_07d0371c7248a629b31d4ce8a665bb78.setContent(html_279cab387beb4bcd56cbf914b12654cc);
+            
+        
+
+        marker_11e2e87980332e7e8817709b54f295c3.bindPopup(popup_07d0371c7248a629b31d4ce8a665bb78)
+        ;
+
+        
+    
+    
+            marker_11e2e87980332e7e8817709b54f295c3.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1f70a04b26dfdea33e63f3b7116ae077 = L.marker(
+                [38.651, -108.3304],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ffe159a9f59b730798d521df59555695 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_862d1cdaf2e0bfb08049bc01aa9629de = $(`<div id="html_862d1cdaf2e0bfb08049bc01aa9629de" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-06 00:00:00<br>                 <strong>Confidence:</strong> 82<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ffe159a9f59b730798d521df59555695.setContent(html_862d1cdaf2e0bfb08049bc01aa9629de);
+            
+        
+
+        marker_1f70a04b26dfdea33e63f3b7116ae077.bindPopup(popup_ffe159a9f59b730798d521df59555695)
+        ;
+
+        
+    
+    
+            marker_1f70a04b26dfdea33e63f3b7116ae077.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-06 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_bda09daa33ca9b357bcadf7eaa6a3804 = L.marker(
+                [37.5225, -107.298],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_8bde10c75b324a4d494665ea29356d13 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_24c6992e87dd6b56c04caae0ea71abed = $(`<div id="html_24c6992e87dd6b56c04caae0ea71abed" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_8bde10c75b324a4d494665ea29356d13.setContent(html_24c6992e87dd6b56c04caae0ea71abed);
+            
+        
+
+        marker_bda09daa33ca9b357bcadf7eaa6a3804.bindPopup(popup_8bde10c75b324a4d494665ea29356d13)
+        ;
+
+        
+    
+    
+            marker_bda09daa33ca9b357bcadf7eaa6a3804.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b19a3817c7e4a720ca1871dc3fb09015 = L.marker(
+                [37.511, -107.2952],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_10da520cf75e5f34df20a0e97ea12b3b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64bbdfa821a094320d69167c60831ad1 = $(`<div id="html_64bbdfa821a094320d69167c60831ad1" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 90<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_10da520cf75e5f34df20a0e97ea12b3b.setContent(html_64bbdfa821a094320d69167c60831ad1);
+            
+        
+
+        marker_b19a3817c7e4a720ca1871dc3fb09015.bindPopup(popup_10da520cf75e5f34df20a0e97ea12b3b)
+        ;
+
+        
+    
+    
+            marker_b19a3817c7e4a720ca1871dc3fb09015.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_628dadc88e9e041f5d50f2a1e9078cc1 = L.marker(
+                [37.5203, -107.3209],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_7ffb9454b9d328f25eb884594cab9033 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4ebf65c5cb0df602116aa8c581e0936 = $(`<div id="html_f4ebf65c5cb0df602116aa8c581e0936" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 79<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_7ffb9454b9d328f25eb884594cab9033.setContent(html_f4ebf65c5cb0df602116aa8c581e0936);
+            
+        
+
+        marker_628dadc88e9e041f5d50f2a1e9078cc1.bindPopup(popup_7ffb9454b9d328f25eb884594cab9033)
+        ;
+
+        
+    
+    
+            marker_628dadc88e9e041f5d50f2a1e9078cc1.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_dcadcd7c5631c760dc8eaf59d433bd2a = L.marker(
+                [37.3611, -106.807],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_5cd1d89f06741a66895bfe601b13e010 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_453e2740170a0d32181547ae02968a8c = $(`<div id="html_453e2740170a0d32181547ae02968a8c" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 95<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_5cd1d89f06741a66895bfe601b13e010.setContent(html_453e2740170a0d32181547ae02968a8c);
+            
+        
+
+        marker_dcadcd7c5631c760dc8eaf59d433bd2a.bindPopup(popup_5cd1d89f06741a66895bfe601b13e010)
+        ;
+
+        
+    
+    
+            marker_dcadcd7c5631c760dc8eaf59d433bd2a.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e98aa72161592a2ddf26fd883ae4143e = L.marker(
+                [38.6527, -108.3294],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_b6cf76539282844cbd1a39ba4ade500b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90ac6209efc21a1547cde16f530f6f4a = $(`<div id="html_90ac6209efc21a1547cde16f530f6f4a" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 96<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_b6cf76539282844cbd1a39ba4ade500b.setContent(html_90ac6209efc21a1547cde16f530f6f4a);
+            
+        
+
+        marker_e98aa72161592a2ddf26fd883ae4143e.bindPopup(popup_b6cf76539282844cbd1a39ba4ade500b)
+        ;
+
+        
+    
+    
+            marker_e98aa72161592a2ddf26fd883ae4143e.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5f2aa6136971ee4d169da82fd837889f = L.marker(
+                [37.5201, -107.2925],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_6d5a41c98b90e204c8591063eabf0d3a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_19db39d62417e7548140bc5b4f5a49ed = $(`<div id="html_19db39d62417e7548140bc5b4f5a49ed" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 33<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_6d5a41c98b90e204c8591063eabf0d3a.setContent(html_19db39d62417e7548140bc5b4f5a49ed);
+            
+        
+
+        marker_5f2aa6136971ee4d169da82fd837889f.bindPopup(popup_6d5a41c98b90e204c8591063eabf0d3a)
+        ;
+
+        
+    
+    
+            marker_5f2aa6136971ee4d169da82fd837889f.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_58d77e1f65c11f0c315f8d236839c22f = L.marker(
+                [37.3606, -106.8039],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_6c4929156c5e32c6a24bf98db4680459 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cbb6f0760cd39c622143ae1c3163688 = $(`<div id="html_9cbb6f0760cd39c622143ae1c3163688" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 76<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_6c4929156c5e32c6a24bf98db4680459.setContent(html_9cbb6f0760cd39c622143ae1c3163688);
+            
+        
+
+        marker_58d77e1f65c11f0c315f8d236839c22f.bindPopup(popup_6c4929156c5e32c6a24bf98db4680459)
+        ;
+
+        
+    
+    
+            marker_58d77e1f65c11f0c315f8d236839c22f.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b660637e898ef8dbf5f806476f564f99 = L.marker(
+                [37.362, -106.7926],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_42ca73830dd6d26f36b09deb3009b93f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc51a6811981de008eebeb6741f26f27 = $(`<div id="html_dc51a6811981de008eebeb6741f26f27" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 94<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_42ca73830dd6d26f36b09deb3009b93f.setContent(html_dc51a6811981de008eebeb6741f26f27);
+            
+        
+
+        marker_b660637e898ef8dbf5f806476f564f99.bindPopup(popup_42ca73830dd6d26f36b09deb3009b93f)
+        ;
+
+        
+    
+    
+            marker_b660637e898ef8dbf5f806476f564f99.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3ca6c98e78e6a8145f19564909f26593 = L.marker(
+                [37.3626, -106.7894],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_9ac695d18f3dd6500994bf7d9439c169 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a02211201b83e2d785d07a7841f7e150 = $(`<div id="html_a02211201b83e2d785d07a7841f7e150" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-07 00:00:00<br>                 <strong>Confidence:</strong> 95<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_9ac695d18f3dd6500994bf7d9439c169.setContent(html_a02211201b83e2d785d07a7841f7e150);
+            
+        
+
+        marker_3ca6c98e78e6a8145f19564909f26593.bindPopup(popup_9ac695d18f3dd6500994bf7d9439c169)
+        ;
+
+        
+    
+    
+            marker_3ca6c98e78e6a8145f19564909f26593.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-07 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f47bcec77f8080e4698a54f5016f4827 = L.marker(
+                [38.7095, -107.0742],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_93f3fecec88d053d1631d32d6dbbcab7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da901cc244a033dff00f53d529a7c970 = $(`<div id="html_da901cc244a033dff00f53d529a7c970" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Gunnison<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 60<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_93f3fecec88d053d1631d32d6dbbcab7.setContent(html_da901cc244a033dff00f53d529a7c970);
+            
+        
+
+        marker_f47bcec77f8080e4698a54f5016f4827.bindPopup(popup_93f3fecec88d053d1631d32d6dbbcab7)
+        ;
+
+        
+    
+    
+            marker_f47bcec77f8080e4698a54f5016f4827.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c5e2b0368c59d1c62c88534d55fdad8b = L.marker(
+                [37.5205, -107.2986],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_6f2261fde67e37dd986e261e43fdbc66 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_87793281522ccef983ebf3e109b8e471 = $(`<div id="html_87793281522ccef983ebf3e109b8e471" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 63<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_6f2261fde67e37dd986e261e43fdbc66.setContent(html_87793281522ccef983ebf3e109b8e471);
+            
+        
+
+        marker_c5e2b0368c59d1c62c88534d55fdad8b.bindPopup(popup_6f2261fde67e37dd986e261e43fdbc66)
+        ;
+
+        
+    
+    
+            marker_c5e2b0368c59d1c62c88534d55fdad8b.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f05a9aa373cea5fa0e85bd1e81201c14 = L.marker(
+                [37.3637, -106.7822],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_8a1c5aabf3ab973fe74461cceeca48ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cfe5eea5b0ebb9f7b37e650dd45a8668 = $(`<div id="html_cfe5eea5b0ebb9f7b37e650dd45a8668" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 67<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_8a1c5aabf3ab973fe74461cceeca48ad.setContent(html_cfe5eea5b0ebb9f7b37e650dd45a8668);
+            
+        
+
+        marker_f05a9aa373cea5fa0e85bd1e81201c14.bindPopup(popup_8a1c5aabf3ab973fe74461cceeca48ad)
+        ;
+
+        
+    
+    
+            marker_f05a9aa373cea5fa0e85bd1e81201c14.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_eeb1306c9dd77f0dd439366bf9eb18e6 = L.marker(
+                [38.0092, -103.6348],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_aa0b6d7936832932571919681d938e0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00d39c70664e91600169665b56d7c0ed = $(`<div id="html_00d39c70664e91600169665b56d7c0ed" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Otero<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 53<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_aa0b6d7936832932571919681d938e0f.setContent(html_00d39c70664e91600169665b56d7c0ed);
+            
+        
+
+        marker_eeb1306c9dd77f0dd439366bf9eb18e6.bindPopup(popup_aa0b6d7936832932571919681d938e0f)
+        ;
+
+        
+    
+    
+            marker_eeb1306c9dd77f0dd439366bf9eb18e6.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_adfd51d3c9c4910f378950538513aca7 = L.marker(
+                [37.3698, -106.7646],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_183ff201f5b5ff7ee6afe5873832c4ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1e5c5cc089b056b0e2ee271b75889146 = $(`<div id="html_1e5c5cc089b056b0e2ee271b75889146" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 97<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_183ff201f5b5ff7ee6afe5873832c4ac.setContent(html_1e5c5cc089b056b0e2ee271b75889146);
+            
+        
+
+        marker_adfd51d3c9c4910f378950538513aca7.bindPopup(popup_183ff201f5b5ff7ee6afe5873832c4ac)
+        ;
+
+        
+    
+    
+            marker_adfd51d3c9c4910f378950538513aca7.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d83e8486e97bc626a7183872cb63d87e = L.marker(
+                [38.6467, -108.3341],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_0dd315ea9d45ab714401304fbe11370d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_51ada8d6d3a80a8b45278ba89faed801 = $(`<div id="html_51ada8d6d3a80a8b45278ba89faed801" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 40<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_0dd315ea9d45ab714401304fbe11370d.setContent(html_51ada8d6d3a80a8b45278ba89faed801);
+            
+        
+
+        marker_d83e8486e97bc626a7183872cb63d87e.bindPopup(popup_0dd315ea9d45ab714401304fbe11370d)
+        ;
+
+        
+    
+    
+            marker_d83e8486e97bc626a7183872cb63d87e.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3c4b97b247890841363a8f6f2694d534 = L.marker(
+                [37.3662, -106.7969],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_681da501151021b01a44a61f193c906c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_615bdbc7fda88e70107e390a6de2551d = $(`<div id="html_615bdbc7fda88e70107e390a6de2551d" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 41<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_681da501151021b01a44a61f193c906c.setContent(html_615bdbc7fda88e70107e390a6de2551d);
+            
+        
+
+        marker_3c4b97b247890841363a8f6f2694d534.bindPopup(popup_681da501151021b01a44a61f193c906c)
+        ;
+
+        
+    
+    
+            marker_3c4b97b247890841363a8f6f2694d534.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4ce389e62c3e01702dd0f02fbbcf4451 = L.marker(
+                [37.3703, -106.7449],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_1b95940f9f58c13b3e2089b4f9cdafc7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d78a8ea50631c59cd5cf62b9002138ed = $(`<div id="html_d78a8ea50631c59cd5cf62b9002138ed" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_1b95940f9f58c13b3e2089b4f9cdafc7.setContent(html_d78a8ea50631c59cd5cf62b9002138ed);
+            
+        
+
+        marker_4ce389e62c3e01702dd0f02fbbcf4451.bindPopup(popup_1b95940f9f58c13b3e2089b4f9cdafc7)
+        ;
+
+        
+    
+    
+            marker_4ce389e62c3e01702dd0f02fbbcf4451.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d9b48da0910920a9f943701bb81a0277 = L.marker(
+                [37.3596, -106.7873],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_1927ae1ef22cf26d5145facf1c047f4b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5f4b1c332827f5fc3001f07b7095c7f = $(`<div id="html_d5f4b1c332827f5fc3001f07b7095c7f" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_1927ae1ef22cf26d5145facf1c047f4b.setContent(html_d5f4b1c332827f5fc3001f07b7095c7f);
+            
+        
+
+        marker_d9b48da0910920a9f943701bb81a0277.bindPopup(popup_1927ae1ef22cf26d5145facf1c047f4b)
+        ;
+
+        
+    
+    
+            marker_d9b48da0910920a9f943701bb81a0277.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_da7a2c5d039d0509e663400229baf010 = L.marker(
+                [37.525, -107.2853],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_de474caed2519dce254520cfc9487401 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d84eef12827c0d0015b7f59913f8f592 = $(`<div id="html_d84eef12827c0d0015b7f59913f8f592" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 52<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_de474caed2519dce254520cfc9487401.setContent(html_d84eef12827c0d0015b7f59913f8f592);
+            
+        
+
+        marker_da7a2c5d039d0509e663400229baf010.bindPopup(popup_de474caed2519dce254520cfc9487401)
+        ;
+
+        
+    
+    
+            marker_da7a2c5d039d0509e663400229baf010.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_296203c139f4b5f8b4a3cef48a969c72 = L.marker(
+                [37.5103, -107.3089],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_d7c50d9edd891d7231923ccb3173c745 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb116a935175cc02c7d83414c738be9b = $(`<div id="html_fb116a935175cc02c7d83414c738be9b" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 29<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_d7c50d9edd891d7231923ccb3173c745.setContent(html_fb116a935175cc02c7d83414c738be9b);
+            
+        
+
+        marker_296203c139f4b5f8b4a3cef48a969c72.bindPopup(popup_d7c50d9edd891d7231923ccb3173c745)
+        ;
+
+        
+    
+    
+            marker_296203c139f4b5f8b4a3cef48a969c72.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0d6b447cac4835560c1faf9fac71e8ce = L.marker(
+                [37.5237, -107.2782],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_58b6ae7b51bdfc260e1c50ae3513f479 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9bb04e73ae28de3d57135d0b1cc22027 = $(`<div id="html_9bb04e73ae28de3d57135d0b1cc22027" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 52<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_58b6ae7b51bdfc260e1c50ae3513f479.setContent(html_9bb04e73ae28de3d57135d0b1cc22027);
+            
+        
+
+        marker_0d6b447cac4835560c1faf9fac71e8ce.bindPopup(popup_58b6ae7b51bdfc260e1c50ae3513f479)
+        ;
+
+        
+    
+    
+            marker_0d6b447cac4835560c1faf9fac71e8ce.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_83ad71dca0d8eaf5d7580e2086681930 = L.marker(
+                [37.5139, -107.3153],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_9de72c67619cd4cf39d43a99008fbc39 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82db79bc9877d3afbd80eba328b11697 = $(`<div id="html_82db79bc9877d3afbd80eba328b11697" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 46<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_9de72c67619cd4cf39d43a99008fbc39.setContent(html_82db79bc9877d3afbd80eba328b11697);
+            
+        
+
+        marker_83ad71dca0d8eaf5d7580e2086681930.bindPopup(popup_9de72c67619cd4cf39d43a99008fbc39)
+        ;
+
+        
+    
+    
+            marker_83ad71dca0d8eaf5d7580e2086681930.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_efc5bc324e5e62a523f84e767d75d3a5 = L.marker(
+                [38.6474, -108.3269],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_e12f79e4a201c474e22092e3ac403b08 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2b239be2662bb9e6fe81150439720bc = $(`<div id="html_b2b239be2662bb9e6fe81150439720bc" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 39<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_e12f79e4a201c474e22092e3ac403b08.setContent(html_b2b239be2662bb9e6fe81150439720bc);
+            
+        
+
+        marker_efc5bc324e5e62a523f84e767d75d3a5.bindPopup(popup_e12f79e4a201c474e22092e3ac403b08)
+        ;
+
+        
+    
+    
+            marker_efc5bc324e5e62a523f84e767d75d3a5.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0faca407030a6e111ddabe0e81eeffcb = L.marker(
+                [38.6341, -108.3775],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_e268d60d5e2cb7ea989a7873b8e8ce22 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41c3733acf08fb1bed2976b3acd0ecf5 = $(`<div id="html_41c3733acf08fb1bed2976b3acd0ecf5" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 64<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_e268d60d5e2cb7ea989a7873b8e8ce22.setContent(html_41c3733acf08fb1bed2976b3acd0ecf5);
+            
+        
+
+        marker_0faca407030a6e111ddabe0e81eeffcb.bindPopup(popup_e268d60d5e2cb7ea989a7873b8e8ce22)
+        ;
+
+        
+    
+    
+            marker_0faca407030a6e111ddabe0e81eeffcb.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_203108ee44e423ac8a834429d129cb5d = L.marker(
+                [38.6484, -108.3344],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_c50183b353c504d7c37919768c9655cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c95fdaa2c985acb7b17cd30fa05e0db = $(`<div id="html_2c95fdaa2c985acb7b17cd30fa05e0db" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 63<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_c50183b353c504d7c37919768c9655cc.setContent(html_2c95fdaa2c985acb7b17cd30fa05e0db);
+            
+        
+
+        marker_203108ee44e423ac8a834429d129cb5d.bindPopup(popup_c50183b353c504d7c37919768c9655cc)
+        ;
+
+        
+    
+    
+            marker_203108ee44e423ac8a834429d129cb5d.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a7e9685ee83a5b7b6df846fbcca0daed = L.marker(
+                [38.6348, -108.3852],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_657a84b9320f645b95dbdbc1d28563b2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_618dcbed160976b77efae06bc4623143 = $(`<div id="html_618dcbed160976b77efae06bc4623143" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Mesa<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 48<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_657a84b9320f645b95dbdbc1d28563b2.setContent(html_618dcbed160976b77efae06bc4623143);
+            
+        
+
+        marker_a7e9685ee83a5b7b6df846fbcca0daed.bindPopup(popup_657a84b9320f645b95dbdbc1d28563b2)
+        ;
+
+        
+    
+    
+            marker_a7e9685ee83a5b7b6df846fbcca0daed.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fbec2fd71c6d285c4cce3b965e1c5e3b = L.marker(
+                [37.365, -106.796],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ea2dfab0e9e93eaa9255640e77e5a7cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_46aa86fcd606d86277cc2ce6c07235fb = $(`<div id="html_46aa86fcd606d86277cc2ce6c07235fb" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ea2dfab0e9e93eaa9255640e77e5a7cc.setContent(html_46aa86fcd606d86277cc2ce6c07235fb);
+            
+        
+
+        marker_fbec2fd71c6d285c4cce3b965e1c5e3b.bindPopup(popup_ea2dfab0e9e93eaa9255640e77e5a7cc)
+        ;
+
+        
+    
+    
+            marker_fbec2fd71c6d285c4cce3b965e1c5e3b.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_28cb0fa5d33229bdcbd1cc936781f6db = L.marker(
+                [37.3764, -106.7524],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_02f71b15b3b9d3328c600b08a442e7b5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f695cd22df0f4ae049ad110176a18280 = $(`<div id="html_f695cd22df0f4ae049ad110176a18280" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-08 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_02f71b15b3b9d3328c600b08a442e7b5.setContent(html_f695cd22df0f4ae049ad110176a18280);
+            
+        
+
+        marker_28cb0fa5d33229bdcbd1cc936781f6db.bindPopup(popup_02f71b15b3b9d3328c600b08a442e7b5)
+        ;
+
+        
+    
+    
+            marker_28cb0fa5d33229bdcbd1cc936781f6db.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-08 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c052bd5c958e391dc1f4010d9c451f9e = L.marker(
+                [37.3725, -106.7505],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_35bf6cd55bfbd4c27b0b61ebf1e4a7bf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_98c4a8aeb413decdf4a89520a57fceb5 = $(`<div id="html_98c4a8aeb413decdf4a89520a57fceb5" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 51<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_35bf6cd55bfbd4c27b0b61ebf1e4a7bf.setContent(html_98c4a8aeb413decdf4a89520a57fceb5);
+            
+        
+
+        marker_c052bd5c958e391dc1f4010d9c451f9e.bindPopup(popup_35bf6cd55bfbd4c27b0b61ebf1e4a7bf)
+        ;
+
+        
+    
+    
+            marker_c052bd5c958e391dc1f4010d9c451f9e.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7371da297df464ec4dcc169bc0c8b790 = L.marker(
+                [38.6396, -108.3488],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ba1d83b7d685972223e6f145cfb7d927 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8c121e7871f3365e78cb70c0cde8a66b = $(`<div id="html_8c121e7871f3365e78cb70c0cde8a66b" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 69<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ba1d83b7d685972223e6f145cfb7d927.setContent(html_8c121e7871f3365e78cb70c0cde8a66b);
+            
+        
+
+        marker_7371da297df464ec4dcc169bc0c8b790.bindPopup(popup_ba1d83b7d685972223e6f145cfb7d927)
+        ;
+
+        
+    
+    
+            marker_7371da297df464ec4dcc169bc0c8b790.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d1d05388d27d9d2cd2333ececeac475f = L.marker(
+                [37.5248, -107.2852],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_6f30ed03386bd3ecd230630aebf3a6c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_628d71ad3d3009e9a23066d1ae48558c = $(`<div id="html_628d71ad3d3009e9a23066d1ae48558c" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 71<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_6f30ed03386bd3ecd230630aebf3a6c6.setContent(html_628d71ad3d3009e9a23066d1ae48558c);
+            
+        
+
+        marker_d1d05388d27d9d2cd2333ececeac475f.bindPopup(popup_6f30ed03386bd3ecd230630aebf3a6c6)
+        ;
+
+        
+    
+    
+            marker_d1d05388d27d9d2cd2333ececeac475f.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8e5c38655a1c2b1fafd405005992f8f6 = L.marker(
+                [37.3746, -106.7712],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ba146354593a76cf127504bc24c21b1c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_877cdddac7a3dc505840b2f6b272c45a = $(`<div id="html_877cdddac7a3dc505840b2f6b272c45a" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 61<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ba146354593a76cf127504bc24c21b1c.setContent(html_877cdddac7a3dc505840b2f6b272c45a);
+            
+        
+
+        marker_8e5c38655a1c2b1fafd405005992f8f6.bindPopup(popup_ba146354593a76cf127504bc24c21b1c)
+        ;
+
+        
+    
+    
+            marker_8e5c38655a1c2b1fafd405005992f8f6.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e8b45b4b1f2d6cad61ebfa4d7319f2d4 = L.marker(
+                [37.521, -107.3081],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_8eeb382e08438e3ac5c853fafc75b3f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7317926eb56050f90abb8474f10a2680 = $(`<div id="html_7317926eb56050f90abb8474f10a2680" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 76<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_8eeb382e08438e3ac5c853fafc75b3f7.setContent(html_7317926eb56050f90abb8474f10a2680);
+            
+        
+
+        marker_e8b45b4b1f2d6cad61ebfa4d7319f2d4.bindPopup(popup_8eeb382e08438e3ac5c853fafc75b3f7)
+        ;
+
+        
+    
+    
+            marker_e8b45b4b1f2d6cad61ebfa4d7319f2d4.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3925a4de142568b7c38dab936bf95580 = L.marker(
+                [37.3764, -106.7603],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_83517f4c502464914ba1936ab2df44ed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_716361e3460271bb929c81dcba850e84 = $(`<div id="html_716361e3460271bb929c81dcba850e84" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_83517f4c502464914ba1936ab2df44ed.setContent(html_716361e3460271bb929c81dcba850e84);
+            
+        
+
+        marker_3925a4de142568b7c38dab936bf95580.bindPopup(popup_83517f4c502464914ba1936ab2df44ed)
+        ;
+
+        
+    
+    
+            marker_3925a4de142568b7c38dab936bf95580.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3c6471414d7f56f0028216a1c4da1132 = L.marker(
+                [37.3656, -106.769],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_4cdd1fc426657be153ab35ac9ea3c183 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1915e1364f57d98b3190bbc7fbec2a55 = $(`<div id="html_1915e1364f57d98b3190bbc7fbec2a55" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 54<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_4cdd1fc426657be153ab35ac9ea3c183.setContent(html_1915e1364f57d98b3190bbc7fbec2a55);
+            
+        
+
+        marker_3c6471414d7f56f0028216a1c4da1132.bindPopup(popup_4cdd1fc426657be153ab35ac9ea3c183)
+        ;
+
+        
+    
+    
+            marker_3c6471414d7f56f0028216a1c4da1132.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5702aac0125acad9fd10bace84b57b7f = L.marker(
+                [37.3674, -106.7579],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_e9bc2ee12ff4724281992bf942c55ff3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7072ba2063731d85476f8f35b6621676 = $(`<div id="html_7072ba2063731d85476f8f35b6621676" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_e9bc2ee12ff4724281992bf942c55ff3.setContent(html_7072ba2063731d85476f8f35b6621676);
+            
+        
+
+        marker_5702aac0125acad9fd10bace84b57b7f.bindPopup(popup_e9bc2ee12ff4724281992bf942c55ff3)
+        ;
+
+        
+    
+    
+            marker_5702aac0125acad9fd10bace84b57b7f.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f8d3ba477c3e6aee969d2aaec5428f87 = L.marker(
+                [37.3691, -106.7468],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_51526e985b3f12ed2d88dd9b12f6b18e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_971cdfd0717b7cb58ef08cff538c11fd = $(`<div id="html_971cdfd0717b7cb58ef08cff538c11fd" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 44<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_51526e985b3f12ed2d88dd9b12f6b18e.setContent(html_971cdfd0717b7cb58ef08cff538c11fd);
+            
+        
+
+        marker_f8d3ba477c3e6aee969d2aaec5428f87.bindPopup(popup_51526e985b3f12ed2d88dd9b12f6b18e)
+        ;
+
+        
+    
+    
+            marker_f8d3ba477c3e6aee969d2aaec5428f87.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_94cb961c81dcd7167d129a184ba06ac0 = L.marker(
+                [37.5229, -107.2966],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_fa695d5c9b48493276d7fab4202cb418 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c6764ceb2b7464600fe7117e8cec005 = $(`<div id="html_7c6764ceb2b7464600fe7117e8cec005" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Hinsdale<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_fa695d5c9b48493276d7fab4202cb418.setContent(html_7c6764ceb2b7464600fe7117e8cec005);
+            
+        
+
+        marker_94cb961c81dcd7167d129a184ba06ac0.bindPopup(popup_fa695d5c9b48493276d7fab4202cb418)
+        ;
+
+        
+    
+    
+            marker_94cb961c81dcd7167d129a184ba06ac0.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_53fa62aa445e558d315733092f865969 = L.marker(
+                [37.3742, -106.7653],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_10c0b895dbef96b60770d6fe3f5d2395 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c390633730a1c8e0c53c3a85c83ca423 = $(`<div id="html_c390633730a1c8e0c53c3a85c83ca423" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 70<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_10c0b895dbef96b60770d6fe3f5d2395.setContent(html_c390633730a1c8e0c53c3a85c83ca423);
+            
+        
+
+        marker_53fa62aa445e558d315733092f865969.bindPopup(popup_10c0b895dbef96b60770d6fe3f5d2395)
+        ;
+
+        
+    
+    
+            marker_53fa62aa445e558d315733092f865969.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_82a5991ef6a4efff9fd738a30e1f7823 = L.marker(
+                [37.3781, -106.7493],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_e1a64d967c6e59c216302fb60a7f9388 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc05aab2df2ea69ebabd0d8b505433a0 = $(`<div id="html_fc05aab2df2ea69ebabd0d8b505433a0" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 98<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_e1a64d967c6e59c216302fb60a7f9388.setContent(html_fc05aab2df2ea69ebabd0d8b505433a0);
+            
+        
+
+        marker_82a5991ef6a4efff9fd738a30e1f7823.bindPopup(popup_e1a64d967c6e59c216302fb60a7f9388)
+        ;
+
+        
+    
+    
+            marker_82a5991ef6a4efff9fd738a30e1f7823.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8e6bf3f7f1122ba9658a96ebe541a13c = L.marker(
+                [37.3646, -106.7638],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_c36cc26ad8a43b6446f58384feeedc71 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88cfdd2434db5d4c8fe54e4fbea273f4 = $(`<div id="html_88cfdd2434db5d4c8fe54e4fbea273f4" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-09 00:00:00<br>                 <strong>Confidence:</strong> 88<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_c36cc26ad8a43b6446f58384feeedc71.setContent(html_88cfdd2434db5d4c8fe54e4fbea273f4);
+            
+        
+
+        marker_8e6bf3f7f1122ba9658a96ebe541a13c.bindPopup(popup_c36cc26ad8a43b6446f58384feeedc71)
+        ;
+
+        
+    
+    
+            marker_8e6bf3f7f1122ba9658a96ebe541a13c.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-09 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1992feb0c465b2872a9b5d431803f1d5 = L.marker(
+                [37.3673, -106.7507],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_caa3e5ae702385cd7921b620bcdf3aaf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e98fe5b68492cda59da3900f4a08bc18 = $(`<div id="html_e98fe5b68492cda59da3900f4a08bc18" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-10 00:00:00<br>                 <strong>Confidence:</strong> 67<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_caa3e5ae702385cd7921b620bcdf3aaf.setContent(html_e98fe5b68492cda59da3900f4a08bc18);
+            
+        
+
+        marker_1992feb0c465b2872a9b5d431803f1d5.bindPopup(popup_caa3e5ae702385cd7921b620bcdf3aaf)
+        ;
+
+        
+    
+    
+            marker_1992feb0c465b2872a9b5d431803f1d5.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-10 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a9fae2b0ca78b73b595bfe657ead8f17 = L.marker(
+                [37.3687, -106.7637],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_e486a9e5b3c577806caa25a27c5c6c56 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dab76b00f3ae2a21be690783369bc5a1 = $(`<div id="html_dab76b00f3ae2a21be690783369bc5a1" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-10 00:00:00<br>                 <strong>Confidence:</strong> 38<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_e486a9e5b3c577806caa25a27c5c6c56.setContent(html_dab76b00f3ae2a21be690783369bc5a1);
+            
+        
+
+        marker_a9fae2b0ca78b73b595bfe657ead8f17.bindPopup(popup_e486a9e5b3c577806caa25a27c5c6c56)
+        ;
+
+        
+    
+    
+            marker_a9fae2b0ca78b73b595bfe657ead8f17.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-10 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5939cc513ec0422711e9a8d9910de5e1 = L.marker(
+                [37.3638, -106.7483],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ead404c0cfb2aa6bed5e9a79d42bee15 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cb68a56dbce10bd9c5321f4e28539d0 = $(`<div id="html_5cb68a56dbce10bd9c5321f4e28539d0" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-11 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ead404c0cfb2aa6bed5e9a79d42bee15.setContent(html_5cb68a56dbce10bd9c5321f4e28539d0);
+            
+        
+
+        marker_5939cc513ec0422711e9a8d9910de5e1.bindPopup(popup_ead404c0cfb2aa6bed5e9a79d42bee15)
+        ;
+
+        
+    
+    
+            marker_5939cc513ec0422711e9a8d9910de5e1.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-11 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d0dce1ee16cff81b72560d42a3eb15d2 = L.marker(
+                [37.3648, -106.7435],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_44f62233dca08fc1f06a4bf37f8c1935 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_11b96bd8489463edc0f924ea0324eb98 = $(`<div id="html_11b96bd8489463edc0f924ea0324eb98" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-11 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_44f62233dca08fc1f06a4bf37f8c1935.setContent(html_11b96bd8489463edc0f924ea0324eb98);
+            
+        
+
+        marker_d0dce1ee16cff81b72560d42a3eb15d2.bindPopup(popup_44f62233dca08fc1f06a4bf37f8c1935)
+        ;
+
+        
+    
+    
+            marker_d0dce1ee16cff81b72560d42a3eb15d2.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-11 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d29e2bddd2e08905485477b22ae5dbe0 = L.marker(
+                [37.3617, -106.7594],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_7236ec15e0741658a4d98b6b6f048987 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_235a7dac20d080bc8aa9812de0ecc90c = $(`<div id="html_235a7dac20d080bc8aa9812de0ecc90c" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-11 00:00:00<br>                 <strong>Confidence:</strong> 73<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_7236ec15e0741658a4d98b6b6f048987.setContent(html_235a7dac20d080bc8aa9812de0ecc90c);
+            
+        
+
+        marker_d29e2bddd2e08905485477b22ae5dbe0.bindPopup(popup_7236ec15e0741658a4d98b6b6f048987)
+        ;
+
+        
+    
+    
+            marker_d29e2bddd2e08905485477b22ae5dbe0.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-11 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a3a48e9ae5bd4c45846e00e09fb8c856 = L.marker(
+                [37.3747, -106.7523],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_d9cc35b5e2ad13a3ae04d2ab251b84c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_29140aa45270d631f2a2d69eca264d9d = $(`<div id="html_29140aa45270d631f2a2d69eca264d9d" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-11 00:00:00<br>                 <strong>Confidence:</strong> 50<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_d9cc35b5e2ad13a3ae04d2ab251b84c0.setContent(html_29140aa45270d631f2a2d69eca264d9d);
+            
+        
+
+        marker_a3a48e9ae5bd4c45846e00e09fb8c856.bindPopup(popup_d9cc35b5e2ad13a3ae04d2ab251b84c0)
+        ;
+
+        
+    
+    
+            marker_a3a48e9ae5bd4c45846e00e09fb8c856.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-11 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_821f108e37c257d7827c4797d7296c0c = L.marker(
+                [37.3711, -106.7427],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_2058ad7fecd35b190e68899285de0407 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c37cf48930490ff4e10b616d7eedaa2b = $(`<div id="html_c37cf48930490ff4e10b616d7eedaa2b" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-11 00:00:00<br>                 <strong>Confidence:</strong> 84<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_2058ad7fecd35b190e68899285de0407.setContent(html_c37cf48930490ff4e10b616d7eedaa2b);
+            
+        
+
+        marker_821f108e37c257d7827c4797d7296c0c.bindPopup(popup_2058ad7fecd35b190e68899285de0407)
+        ;
+
+        
+    
+    
+            marker_821f108e37c257d7827c4797d7296c0c.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-11 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7bac7e6de73d1c6c8dba879956335e83 = L.marker(
+                [39.4155, -108.8263],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_c4855ed9f8aaa527f1b206f3b016a202 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c7701f2eba8be6d674ab506a38751fef = $(`<div id="html_c7701f2eba8be6d674ab506a38751fef" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-11 00:00:00<br>                 <strong>Confidence:</strong> 81<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_c4855ed9f8aaa527f1b206f3b016a202.setContent(html_c7701f2eba8be6d674ab506a38751fef);
+            
+        
+
+        marker_7bac7e6de73d1c6c8dba879956335e83.bindPopup(popup_c4855ed9f8aaa527f1b206f3b016a202)
+        ;
+
+        
+    
+    
+            marker_7bac7e6de73d1c6c8dba879956335e83.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-11 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f5653b790c72a8b32206138d1c3b946d = L.marker(
+                [38.609, -108.3424],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_13a3664b6e304784e620956d2bbba558 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f1a7946be49a8683c52f4ea89372182 = $(`<div id="html_3f1a7946be49a8683c52f4ea89372182" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-13 00:00:00<br>                 <strong>Confidence:</strong> 73<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_13a3664b6e304784e620956d2bbba558.setContent(html_3f1a7946be49a8683c52f4ea89372182);
+            
+        
+
+        marker_f5653b790c72a8b32206138d1c3b946d.bindPopup(popup_13a3664b6e304784e620956d2bbba558)
+        ;
+
+        
+    
+    
+            marker_f5653b790c72a8b32206138d1c3b946d.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-13 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_af2c441bcdb34a119972711a674fbf0b = L.marker(
+                [38.5955, -108.355],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_7afc343507b1ef3652adbf1bf9024ed8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75d919d32ba417ffae034b21385ecc47 = $(`<div id="html_75d919d32ba417ffae034b21385ecc47" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-13 00:00:00<br>                 <strong>Confidence:</strong> 90<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_7afc343507b1ef3652adbf1bf9024ed8.setContent(html_75d919d32ba417ffae034b21385ecc47);
+            
+        
+
+        marker_af2c441bcdb34a119972711a674fbf0b.bindPopup(popup_7afc343507b1ef3652adbf1bf9024ed8)
+        ;
+
+        
+    
+    
+            marker_af2c441bcdb34a119972711a674fbf0b.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-13 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1673f8476fa489020119c1ae71f082a9 = L.marker(
+                [39.7099, -105.073],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_20be566258338807a7e0004ac49657b4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e6560c40f78eb2262b0f25fda542a3fc = $(`<div id="html_e6560c40f78eb2262b0f25fda542a3fc" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Jefferson<br>                 <strong>Date:</strong> 2023-08-13 00:00:00<br>                 <strong>Confidence:</strong> 72<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_20be566258338807a7e0004ac49657b4.setContent(html_e6560c40f78eb2262b0f25fda542a3fc);
+            
+        
+
+        marker_1673f8476fa489020119c1ae71f082a9.bindPopup(popup_20be566258338807a7e0004ac49657b4)
+        ;
+
+        
+    
+    
+            marker_1673f8476fa489020119c1ae71f082a9.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-13 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1c01caee520c63940d1e58bb49517efc = L.marker(
+                [38.6045, -108.3479],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_b5685faf31cf0fe3ee92224609a65833 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb8720c1485bb2cb904c892d8f92b5a7 = $(`<div id="html_bb8720c1485bb2cb904c892d8f92b5a7" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-14 00:00:00<br>                 <strong>Confidence:</strong> 94<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_b5685faf31cf0fe3ee92224609a65833.setContent(html_bb8720c1485bb2cb904c892d8f92b5a7);
+            
+        
+
+        marker_1c01caee520c63940d1e58bb49517efc.bindPopup(popup_b5685faf31cf0fe3ee92224609a65833)
+        ;
+
+        
+    
+    
+            marker_1c01caee520c63940d1e58bb49517efc.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-14 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6a4d10b3027601fd201048cc61a16dda = L.marker(
+                [38.6028, -108.3593],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_d3b300aab15d96aeaee2726ed5e6fb0e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_352ec1f69a92076b5efa32e9d17ad752 = $(`<div id="html_352ec1f69a92076b5efa32e9d17ad752" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-14 00:00:00<br>                 <strong>Confidence:</strong> 69<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_d3b300aab15d96aeaee2726ed5e6fb0e.setContent(html_352ec1f69a92076b5efa32e9d17ad752);
+            
+        
+
+        marker_6a4d10b3027601fd201048cc61a16dda.bindPopup(popup_d3b300aab15d96aeaee2726ed5e6fb0e)
+        ;
+
+        
+    
+    
+            marker_6a4d10b3027601fd201048cc61a16dda.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-14 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fa9f041011802ed955f81228f1234b28 = L.marker(
+                [38.601, -108.3707],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_3e0c41c526452794e489db6d5ab9ef77 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_536bdd3214f381a971383b267f945142 = $(`<div id="html_536bdd3214f381a971383b267f945142" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-14 00:00:00<br>                 <strong>Confidence:</strong> 8<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_3e0c41c526452794e489db6d5ab9ef77.setContent(html_536bdd3214f381a971383b267f945142);
+            
+        
+
+        marker_fa9f041011802ed955f81228f1234b28.bindPopup(popup_3e0c41c526452794e489db6d5ab9ef77)
+        ;
+
+        
+    
+    
+            marker_fa9f041011802ed955f81228f1234b28.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-14 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_eb6d2fedbc3401dd41549f2412873907 = L.marker(
+                [38.6134, -108.3502],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_6afca1ac96d84605bbc6eac2ba48375f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ff87d10b5b10bedf9a1b2785c41c007 = $(`<div id="html_9ff87d10b5b10bedf9a1b2785c41c007" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-14 00:00:00<br>                 <strong>Confidence:</strong> 35<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_6afca1ac96d84605bbc6eac2ba48375f.setContent(html_9ff87d10b5b10bedf9a1b2785c41c007);
+            
+        
+
+        marker_eb6d2fedbc3401dd41549f2412873907.bindPopup(popup_6afca1ac96d84605bbc6eac2ba48375f)
+        ;
+
+        
+    
+    
+            marker_eb6d2fedbc3401dd41549f2412873907.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-14 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5b177ac5729d79cad63e67dc404106a3 = L.marker(
+                [39.7425, -108.3338],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_167cf96e94c80fac9d23d11ff6c8ccad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6482da4a01750800c1f17e91433a549c = $(`<div id="html_6482da4a01750800c1f17e91433a549c" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-15 00:00:00<br>                 <strong>Confidence:</strong> 85<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_167cf96e94c80fac9d23d11ff6c8ccad.setContent(html_6482da4a01750800c1f17e91433a549c);
+            
+        
+
+        marker_5b177ac5729d79cad63e67dc404106a3.bindPopup(popup_167cf96e94c80fac9d23d11ff6c8ccad)
+        ;
+
+        
+    
+    
+            marker_5b177ac5729d79cad63e67dc404106a3.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-15 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3504fbd75792bbb433783eaf925ea80e = L.marker(
+                [38.6253, -108.3419],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_5d7e56f374ab40224aa2d974902d913f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fbfe86a952c8c6482a91395178fd13b3 = $(`<div id="html_fbfe86a952c8c6482a91395178fd13b3" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-16 00:00:00<br>                 <strong>Confidence:</strong> 70<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_5d7e56f374ab40224aa2d974902d913f.setContent(html_fbfe86a952c8c6482a91395178fd13b3);
+            
+        
+
+        marker_3504fbd75792bbb433783eaf925ea80e.bindPopup(popup_5d7e56f374ab40224aa2d974902d913f)
+        ;
+
+        
+    
+    
+            marker_3504fbd75792bbb433783eaf925ea80e.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-16 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4e30d106647d59ffd91979fcee38d4a2 = L.marker(
+                [38.6224, -108.3283],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_57b5e1245515680cb9208eb7c3483ec9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74c7ff4928c4811d83dd1370dfff7a26 = $(`<div id="html_74c7ff4928c4811d83dd1370dfff7a26" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-16 00:00:00<br>                 <strong>Confidence:</strong> 40<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_57b5e1245515680cb9208eb7c3483ec9.setContent(html_74c7ff4928c4811d83dd1370dfff7a26);
+            
+        
+
+        marker_4e30d106647d59ffd91979fcee38d4a2.bindPopup(popup_57b5e1245515680cb9208eb7c3483ec9)
+        ;
+
+        
+    
+    
+            marker_4e30d106647d59ffd91979fcee38d4a2.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-16 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ace10c8bd73c0c7574edc0711cb6491a = L.marker(
+                [38.5906, -108.353],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_f2d8f82081c8aaf3b1c373d563312841 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82a52ad85c44f218ba86dd849c3a34ec = $(`<div id="html_82a52ad85c44f218ba86dd849c3a34ec" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 90<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_f2d8f82081c8aaf3b1c373d563312841.setContent(html_82a52ad85c44f218ba86dd849c3a34ec);
+            
+        
+
+        marker_ace10c8bd73c0c7574edc0711cb6491a.bindPopup(popup_f2d8f82081c8aaf3b1c373d563312841)
+        ;
+
+        
+    
+    
+            marker_ace10c8bd73c0c7574edc0711cb6491a.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4f2548b4055a453e9b746e01be94843d = L.marker(
+                [38.5861, -108.347],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_4661564f705c8412fe67823539e927eb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7a1b497a946f57524314efb3106a624e = $(`<div id="html_7a1b497a946f57524314efb3106a624e" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 56<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_4661564f705c8412fe67823539e927eb.setContent(html_7a1b497a946f57524314efb3106a624e);
+            
+        
+
+        marker_4f2548b4055a453e9b746e01be94843d.bindPopup(popup_4661564f705c8412fe67823539e927eb)
+        ;
+
+        
+    
+    
+            marker_4f2548b4055a453e9b746e01be94843d.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1de8d32092f5ea239c76e0664af628f2 = L.marker(
+                [40.2, -108.7562],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_f77ceef3959cc228ca796cf799121714 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1db2c759e43ad48a1299216a8b9525bc = $(`<div id="html_1db2c759e43ad48a1299216a8b9525bc" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 40<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_f77ceef3959cc228ca796cf799121714.setContent(html_1db2c759e43ad48a1299216a8b9525bc);
+            
+        
+
+        marker_1de8d32092f5ea239c76e0664af628f2.bindPopup(popup_f77ceef3959cc228ca796cf799121714)
+        ;
+
+        
+    
+    
+            marker_1de8d32092f5ea239c76e0664af628f2.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_64bc768074e00a2c1db30e5e224a8ebe = L.marker(
+                [38.6027, -108.3481],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_d9ee01e5b15a9ef408967ffa59e0b554 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0558493d82ec9255b35bc8881c733a72 = $(`<div id="html_0558493d82ec9255b35bc8881c733a72" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 64<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_d9ee01e5b15a9ef408967ffa59e0b554.setContent(html_0558493d82ec9255b35bc8881c733a72);
+            
+        
+
+        marker_64bc768074e00a2c1db30e5e224a8ebe.bindPopup(popup_d9ee01e5b15a9ef408967ffa59e0b554)
+        ;
+
+        
+    
+    
+            marker_64bc768074e00a2c1db30e5e224a8ebe.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_02c64bc2d5810e507958c85c1777b401 = L.marker(
+                [38.5945, -108.3521],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_33feae19d90dafb32822bbf873371f87 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d3408640d713d91a00f965a9a7925d9 = $(`<div id="html_0d3408640d713d91a00f965a9a7925d9" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 79<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_33feae19d90dafb32822bbf873371f87.setContent(html_0d3408640d713d91a00f965a9a7925d9);
+            
+        
+
+        marker_02c64bc2d5810e507958c85c1777b401.bindPopup(popup_33feae19d90dafb32822bbf873371f87)
+        ;
+
+        
+    
+    
+            marker_02c64bc2d5810e507958c85c1777b401.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ccb4e16de4dc976ffa1e7959fa9e044c = L.marker(
+                [38.6005, -108.3932],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_7a5c9d01af2d0c1049fdd37f556068de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_836169fbfc8014b7e36d3d3144392c61 = $(`<div id="html_836169fbfc8014b7e36d3d3144392c61" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Mesa<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 68<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_7a5c9d01af2d0c1049fdd37f556068de.setContent(html_836169fbfc8014b7e36d3d3144392c61);
+            
+        
+
+        marker_ccb4e16de4dc976ffa1e7959fa9e044c.bindPopup(popup_7a5c9d01af2d0c1049fdd37f556068de)
+        ;
+
+        
+    
+    
+            marker_ccb4e16de4dc976ffa1e7959fa9e044c.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_99da210a0c801e29b82b0318c9b2af83 = L.marker(
+                [38.5828, -108.3963],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_f61314446a85c9cb1059d6478e2e3d6a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0d8fc06c5f6b57ff7bfb3f6a7481f3c = $(`<div id="html_b0d8fc06c5f6b57ff7bfb3f6a7481f3c" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Mesa<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 61<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_f61314446a85c9cb1059d6478e2e3d6a.setContent(html_b0d8fc06c5f6b57ff7bfb3f6a7481f3c);
+            
+        
+
+        marker_99da210a0c801e29b82b0318c9b2af83.bindPopup(popup_f61314446a85c9cb1059d6478e2e3d6a)
+        ;
+
+        
+    
+    
+            marker_99da210a0c801e29b82b0318c9b2af83.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e7b41a3154a59d0c642772bd0e82f400 = L.marker(
+                [40.1944, -108.7607],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_ecfdef0189213b6b9a44d0e79b6eead2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0f91e11c640296a080d683edf5d4773e = $(`<div id="html_0f91e11c640296a080d683edf5d4773e" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 64<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_ecfdef0189213b6b9a44d0e79b6eead2.setContent(html_0f91e11c640296a080d683edf5d4773e);
+            
+        
+
+        marker_e7b41a3154a59d0c642772bd0e82f400.bindPopup(popup_ecfdef0189213b6b9a44d0e79b6eead2)
+        ;
+
+        
+    
+    
+            marker_e7b41a3154a59d0c642772bd0e82f400.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d42723326adf5421dd975d07d533f83c = L.marker(
+                [40.1891, -108.7753],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_779edcbc80c4ee4106a72787c7bf791e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d7f2db1f309d26464d0ff9bc17b1aac = $(`<div id="html_9d7f2db1f309d26464d0ff9bc17b1aac" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 81<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_779edcbc80c4ee4106a72787c7bf791e.setContent(html_9d7f2db1f309d26464d0ff9bc17b1aac);
+            
+        
+
+        marker_d42723326adf5421dd975d07d533f83c.bindPopup(popup_779edcbc80c4ee4106a72787c7bf791e)
+        ;
+
+        
+    
+    
+            marker_d42723326adf5421dd975d07d533f83c.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a36b078db826e01443cfd0b59fdaa670 = L.marker(
+                [38.5988, -108.3623],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_86905eff236f1436e95bb2b00e2f9581 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_29437772e4690d5eadbaecdc96b2fa0e = $(`<div id="html_29437772e4690d5eadbaecdc96b2fa0e" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 87<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_86905eff236f1436e95bb2b00e2f9581.setContent(html_29437772e4690d5eadbaecdc96b2fa0e);
+            
+        
+
+        marker_a36b078db826e01443cfd0b59fdaa670.bindPopup(popup_86905eff236f1436e95bb2b00e2f9581)
+        ;
+
+        
+    
+    
+            marker_a36b078db826e01443cfd0b59fdaa670.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5eb73271f3d730e85c18514dd96d9cc7 = L.marker(
+                [40.1872, -108.7474],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_23d50cf65789326cd02a230514b5af4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_edb13cb744eda175185c2c3901b25e12 = $(`<div id="html_edb13cb744eda175185c2c3901b25e12" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 70<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_23d50cf65789326cd02a230514b5af4f.setContent(html_edb13cb744eda175185c2c3901b25e12);
+            
+        
+
+        marker_5eb73271f3d730e85c18514dd96d9cc7.bindPopup(popup_23d50cf65789326cd02a230514b5af4f)
+        ;
+
+        
+    
+    
+            marker_5eb73271f3d730e85c18514dd96d9cc7.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f8af0fb78ebdd1020f93b7e85ddffd68 = L.marker(
+                [38.5971, -108.3389],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_9314d3e7c2e5267342f6b946bbdecb24 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74efbbe60c8bbcda1bebf08d581f6d6b = $(`<div id="html_74efbbe60c8bbcda1bebf08d581f6d6b" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Montrose<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 77<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_9314d3e7c2e5267342f6b946bbdecb24.setContent(html_74efbbe60c8bbcda1bebf08d581f6d6b);
+            
+        
+
+        marker_f8af0fb78ebdd1020f93b7e85ddffd68.bindPopup(popup_9314d3e7c2e5267342f6b946bbdecb24)
+        ;
+
+        
+    
+    
+            marker_f8af0fb78ebdd1020f93b7e85ddffd68.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fa7ca0297997f4822b866098ba8a0c6e = L.marker(
+                [40.1831, -108.7688],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_87d2e654dd7b072eb5a27d5f93203403 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0f053ae1e0f5e265df7105aeec9216f3 = $(`<div id="html_0f053ae1e0f5e265df7105aeec9216f3" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-17 00:00:00<br>                 <strong>Confidence:</strong> 65<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_87d2e654dd7b072eb5a27d5f93203403.setContent(html_0f053ae1e0f5e265df7105aeec9216f3);
+            
+        
+
+        marker_fa7ca0297997f4822b866098ba8a0c6e.bindPopup(popup_87d2e654dd7b072eb5a27d5f93203403)
+        ;
+
+        
+    
+    
+            marker_fa7ca0297997f4822b866098ba8a0c6e.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-17 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9fc557c83f577f77fa035e8d335cbcff = L.marker(
+                [39.6204, -108.7098],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_5f6d75b26b6591bfeecfee62737deb8d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38531c0e7a1e212cb28229e84a7f7248 = $(`<div id="html_38531c0e7a1e212cb28229e84a7f7248" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-18 00:00:00<br>                 <strong>Confidence:</strong> 66<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_5f6d75b26b6591bfeecfee62737deb8d.setContent(html_38531c0e7a1e212cb28229e84a7f7248);
+            
+        
+
+        marker_9fc557c83f577f77fa035e8d335cbcff.bindPopup(popup_5f6d75b26b6591bfeecfee62737deb8d)
+        ;
+
+        
+    
+    
+            marker_9fc557c83f577f77fa035e8d335cbcff.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-18 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c529982dd6e921be022e43460a51470a = L.marker(
+                [38.5046, -104.7865],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_2a1a89bb0a7cbf5677c710c4642f68a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e4af9855f3b1598b0c25189f0078486f = $(`<div id="html_e4af9855f3b1598b0c25189f0078486f" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Pueblo<br>                 <strong>Date:</strong> 2023-08-18 00:00:00<br>                 <strong>Confidence:</strong> 88<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_2a1a89bb0a7cbf5677c710c4642f68a8.setContent(html_e4af9855f3b1598b0c25189f0078486f);
+            
+        
+
+        marker_c529982dd6e921be022e43460a51470a.bindPopup(popup_2a1a89bb0a7cbf5677c710c4642f68a8)
+        ;
+
+        
+    
+    
+            marker_c529982dd6e921be022e43460a51470a.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-18 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_80703cee51cef3249341cdc329acde46 = L.marker(
+                [37.3648, -106.7433],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_366cc86ef5c5672859dbabf000557fb6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cfe55a03d3c1985d6cea33bc613dcf86 = $(`<div id="html_cfe55a03d3c1985d6cea33bc613dcf86" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-20 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_366cc86ef5c5672859dbabf000557fb6.setContent(html_cfe55a03d3c1985d6cea33bc613dcf86);
+            
+        
+
+        marker_80703cee51cef3249341cdc329acde46.bindPopup(popup_366cc86ef5c5672859dbabf000557fb6)
+        ;
+
+        
+    
+    
+            marker_80703cee51cef3249341cdc329acde46.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-20 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_756697323441a798889948cc8ef9a4a8 = L.marker(
+                [37.3623, -106.7566],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_e07c3e198d5863ff2fce204bed994ef9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1173b5b17cbc5310ccd475b572a4775b = $(`<div id="html_1173b5b17cbc5310ccd475b572a4775b" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-20 00:00:00<br>                 <strong>Confidence:</strong> 78<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_e07c3e198d5863ff2fce204bed994ef9.setContent(html_1173b5b17cbc5310ccd475b572a4775b);
+            
+        
+
+        marker_756697323441a798889948cc8ef9a4a8.bindPopup(popup_e07c3e198d5863ff2fce204bed994ef9)
+        ;
+
+        
+    
+    
+            marker_756697323441a798889948cc8ef9a4a8.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-20 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a43aa7715a911b8cc9a562b1f5f3733d = L.marker(
+                [39.6244, -108.7115],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_084da1b72b77c53d12fea4a1f46896ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_244a63c6174e44c7db9fb0e59ce61c29 = $(`<div id="html_244a63c6174e44c7db9fb0e59ce61c29" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 100<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_084da1b72b77c53d12fea4a1f46896ea.setContent(html_244a63c6174e44c7db9fb0e59ce61c29);
+            
+        
+
+        marker_a43aa7715a911b8cc9a562b1f5f3733d.bindPopup(popup_084da1b72b77c53d12fea4a1f46896ea)
+        ;
+
+        
+    
+    
+            marker_a43aa7715a911b8cc9a562b1f5f3733d.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_48d9aa8f01c85d52b0e70775f2b68478 = L.marker(
+                [39.6226, -108.7282],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_8c17ec96f40565ee3fc87f9f8739c99a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56c0416212ec31bdb9749dee43d058e2 = $(`<div id="html_56c0416212ec31bdb9749dee43d058e2" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 76<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_8c17ec96f40565ee3fc87f9f8739c99a.setContent(html_56c0416212ec31bdb9749dee43d058e2);
+            
+        
+
+        marker_48d9aa8f01c85d52b0e70775f2b68478.bindPopup(popup_8c17ec96f40565ee3fc87f9f8739c99a)
+        ;
+
+        
+    
+    
+            marker_48d9aa8f01c85d52b0e70775f2b68478.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b56ac2765075010c98c5d3ddf9830081 = L.marker(
+                [39.6139, -108.7108],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_bd57e7e57ef2d6c5c0e9bf3342bf19d5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b9e02afb8b506ab6c59e8dc31e612c2 = $(`<div id="html_4b9e02afb8b506ab6c59e8dc31e612c2" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 88<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_bd57e7e57ef2d6c5c0e9bf3342bf19d5.setContent(html_4b9e02afb8b506ab6c59e8dc31e612c2);
+            
+        
+
+        marker_b56ac2765075010c98c5d3ddf9830081.bindPopup(popup_bd57e7e57ef2d6c5c0e9bf3342bf19d5)
+        ;
+
+        
+    
+    
+            marker_b56ac2765075010c98c5d3ddf9830081.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_24e61e033c445938ae0934e691c55bb3 = L.marker(
+                [39.6231, -108.7172],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_dc1bf556279571fa116cf8ea4c031158 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5eb7bcdc6740684ead76c29d387b976e = $(`<div id="html_5eb7bcdc6740684ead76c29d387b976e" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 53<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_dc1bf556279571fa116cf8ea4c031158.setContent(html_5eb7bcdc6740684ead76c29d387b976e);
+            
+        
+
+        marker_24e61e033c445938ae0934e691c55bb3.bindPopup(popup_dc1bf556279571fa116cf8ea4c031158)
+        ;
+
+        
+    
+    
+            marker_24e61e033c445938ae0934e691c55bb3.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_31307993348f16ac11070701d0574d4d = L.marker(
+                [37.365, -106.7508],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_c18ed520905bd8c010b545bccbe575ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69791df7a3ca6ca4c1a3aa7729596cf0 = $(`<div id="html_69791df7a3ca6ca4c1a3aa7729596cf0" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 38<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_c18ed520905bd8c010b545bccbe575ec.setContent(html_69791df7a3ca6ca4c1a3aa7729596cf0);
+            
+        
+
+        marker_31307993348f16ac11070701d0574d4d.bindPopup(popup_c18ed520905bd8c010b545bccbe575ec)
+        ;
+
+        
+    
+    
+            marker_31307993348f16ac11070701d0574d4d.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ddf33f3ab8d892828b731879b2dce432 = L.marker(
+                [39.6226, -108.719],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_886b1d403ddebfae0b0efc10c5a4f87f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4b01841dde7b177c5b17448bef3dedb = $(`<div id="html_f4b01841dde7b177c5b17448bef3dedb" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 36<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_886b1d403ddebfae0b0efc10c5a4f87f.setContent(html_f4b01841dde7b177c5b17448bef3dedb);
+            
+        
+
+        marker_ddf33f3ab8d892828b731879b2dce432.bindPopup(popup_886b1d403ddebfae0b0efc10c5a4f87f)
+        ;
+
+        
+    
+    
+            marker_ddf33f3ab8d892828b731879b2dce432.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ff04c788bcec2db5dbf441c7247f9cf9 = L.marker(
+                [37.3669, -106.7393],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_9d333a28b581fdeb285de05648ced9b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6e71a9d1827e90728a18dd23b6609410 = $(`<div id="html_6e71a9d1827e90728a18dd23b6609410" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 71<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_9d333a28b581fdeb285de05648ced9b9.setContent(html_6e71a9d1827e90728a18dd23b6609410);
+            
+        
+
+        marker_ff04c788bcec2db5dbf441c7247f9cf9.bindPopup(popup_9d333a28b581fdeb285de05648ced9b9)
+        ;
+
+        
+    
+    
+            marker_ff04c788bcec2db5dbf441c7247f9cf9.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_20a921778412e8c9bf6b3cd66e0b551f = L.marker(
+                [37.3759, -106.7416],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_62fc2447f66ce9e566cc46877a0e6efc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_97bcae829deefacf8ab7106d4fda5c13 = $(`<div id="html_97bcae829deefacf8ab7106d4fda5c13" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Archuleta<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 94<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_62fc2447f66ce9e566cc46877a0e6efc.setContent(html_97bcae829deefacf8ab7106d4fda5c13);
+            
+        
+
+        marker_20a921778412e8c9bf6b3cd66e0b551f.bindPopup(popup_62fc2447f66ce9e566cc46877a0e6efc)
+        ;
+
+        
+    
+    
+            marker_20a921778412e8c9bf6b3cd66e0b551f.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_68e2f4b905f9a2111b58492fe84b5d84 = L.marker(
+                [39.6243, -108.715],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_42deb28181614e8bef985344ab5aa950 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_39c67b0f3c5ab4d1683ac21c329ac616 = $(`<div id="html_39c67b0f3c5ab4d1683ac21c329ac616" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Garfield<br>                 <strong>Date:</strong> 2023-08-21 00:00:00<br>                 <strong>Confidence:</strong> 48<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_42deb28181614e8bef985344ab5aa950.setContent(html_39c67b0f3c5ab4d1683ac21c329ac616);
+            
+        
+
+        marker_68e2f4b905f9a2111b58492fe84b5d84.bindPopup(popup_42deb28181614e8bef985344ab5aa950)
+        ;
+
+        
+    
+    
+            marker_68e2f4b905f9a2111b58492fe84b5d84.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-21 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_baf9f82116becf2a7dd9af412a60fb03 = L.marker(
+                [40.171, -107.6697],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_1a48191d1ba402bb80313de185198693 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5bfe2b59e05dee99b7859f81ce9bb6cf = $(`<div id="html_5bfe2b59e05dee99b7859f81ce9bb6cf" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-29 00:00:00<br>                 <strong>Confidence:</strong> 75<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_1a48191d1ba402bb80313de185198693.setContent(html_5bfe2b59e05dee99b7859f81ce9bb6cf);
+            
+        
+
+        marker_baf9f82116becf2a7dd9af412a60fb03.bindPopup(popup_1a48191d1ba402bb80313de185198693)
+        ;
+
+        
+    
+    
+            marker_baf9f82116becf2a7dd9af412a60fb03.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-29 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d660821f8ef32b64cb15d29186d8f7db = L.marker(
+                [40.1687, -107.6753],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_fad8efa67d7ef6396f04c96c8197af00 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2979857746bd25f4d96daec16605f67f = $(`<div id="html_2979857746bd25f4d96daec16605f67f" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Rio Blanco<br>                 <strong>Date:</strong> 2023-08-29 00:00:00<br>                 <strong>Confidence:</strong> 76<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_fad8efa67d7ef6396f04c96c8197af00.setContent(html_2979857746bd25f4d96daec16605f67f);
+            
+        
+
+        marker_d660821f8ef32b64cb15d29186d8f7db.bindPopup(popup_fad8efa67d7ef6396f04c96c8197af00)
+        ;
+
+        
+    
+    
+            marker_d660821f8ef32b64cb15d29186d8f7db.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-29 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_693ffa5fa50c868784a3f297be82d5ac = L.marker(
+                [39.1857, -108.6905],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_afea8b45bba83f9f9aca68ac852bd226 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6777f5b6b020681b25eff948d18177e2 = $(`<div id="html_6777f5b6b020681b25eff948d18177e2" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Mesa<br>                 <strong>Date:</strong> 2023-08-30 00:00:00<br>                 <strong>Confidence:</strong> 82<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_afea8b45bba83f9f9aca68ac852bd226.setContent(html_6777f5b6b020681b25eff948d18177e2);
+            
+        
+
+        marker_693ffa5fa50c868784a3f297be82d5ac.bindPopup(popup_afea8b45bba83f9f9aca68ac852bd226)
+        ;
+
+        
+    
+    
+            marker_693ffa5fa50c868784a3f297be82d5ac.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-30 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_63563fb72357b010461353fd69df34bb = L.marker(
+                [39.1964, -108.6999],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_615b4cd9b40e25912cad1f61de8ae06f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d7f66aaba2982ce359d21a5eea365966 = $(`<div id="html_d7f66aaba2982ce359d21a5eea365966" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Mesa<br>                 <strong>Date:</strong> 2023-08-30 00:00:00<br>                 <strong>Confidence:</strong> 79<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_615b4cd9b40e25912cad1f61de8ae06f.setContent(html_d7f66aaba2982ce359d21a5eea365966);
+            
+        
+
+        marker_63563fb72357b010461353fd69df34bb.bindPopup(popup_615b4cd9b40e25912cad1f61de8ae06f)
+        ;
+
+        
+    
+    
+            marker_63563fb72357b010461353fd69df34bb.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-30 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_12b241ba0e71a8eb40878a1b7225349d = L.marker(
+                [39.1946, -108.6883],
+                {
+}
+            ).addTo(map_411b3e8dae92850409f4476facc0caa4);
+        
+    
+        var popup_b4672db5cd8191afa2054c9de61bb66c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_55fedf0b6221004b1188a9417b250b36 = $(`<div id="html_55fedf0b6221004b1188a9417b250b36" style="width: 100.0%; height: 100.0%;">                 <strong>County:</strong> Mesa<br>                 <strong>Date:</strong> 2023-08-30 00:00:00<br>                 <strong>Confidence:</strong> 91<br>                 <strong>Avg AQI (Within Dist):</strong> N/A                 </div>`)[0];
+                popup_b4672db5cd8191afa2054c9de61bb66c.setContent(html_55fedf0b6221004b1188a9417b250b36);
+            
+        
+
+        marker_12b241ba0e71a8eb40878a1b7225349d.bindPopup(popup_b4672db5cd8191afa2054c9de61bb66c)
+        ;
+
+        
+    
+    
+            marker_12b241ba0e71a8eb40878a1b7225349d.bindTooltip(
+                `<div>
+                     Wildfire: 2023-08-30 00:00:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
