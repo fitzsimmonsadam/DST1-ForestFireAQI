@@ -172,3 +172,4 @@ cython_debug/
 
 src/config.json
 .DS_Store
+data/wildfire_data/FIRMS_data/DL_FIRE_SV-C2_584955/fire_archive_SV-C2_584955.csv
