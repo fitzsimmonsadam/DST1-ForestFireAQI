@@ -5,9 +5,9 @@ import logging
 import matplotlib.pyplot as plt
 import folium
 import webbrowser
-import plotly.express as px
-import plotly.graph_objects as go
-import json
+import numpy as np
+import matplotlib.animation as animation
+
 class GeoPlots:
     def __init__(self, ozone_data_path, pm25_data_path, wildfire_data_path, state_shapefile, start_year=None, end_year=None):
 
@@ -34,8 +34,6 @@ class GeoPlots:
             self.aqi_pm25 = self.aqi_pm25[self.aqi_pm25['Year'].between(start_year, end_year)]
             self.aqi_ozone = self.aqi_ozone[self.aqi_ozone['Year'].between(start_year, end_year)]
             self.wildfire_data = self.wildfire_data[self.wildfire_data['Year'].between(start_year, end_year)]
-        print(self.wildfire_data[['acq_date', 'latitude', 'longitude']].head())
-
 
     def plot_stations(self):
         try:
@@ -65,6 +63,7 @@ class GeoPlots:
         except Exception as e:
             self.logger.error(f"Error plotting stations: {e}")
             raise
+
     def plot_wildfires(self):
         try:
             self.logger.info("Plotting wildfires.")
@@ -90,37 +89,40 @@ class GeoPlots:
         except Exception as e:
             self.logger.error(f"Error plotting wildfires: {e}")
             raise
+
     def plot_timeline(self):
         try:
-            self.logger.info("Plotting wildfire timeline with GeoJSON.")
-            with open('../data/co_shapefile/counties/counties_19.geojson') as f:
-                geojson_data = json.load(f)
-            print(geojson_data['features'][0].keys())
-            print(geojson_data['features'][0]['properties'].keys())
-            fig = px.scatter_geo(
-                self.wildfire_data,
-                lat='latitude',
-                lon='longitude',
-                hover_name='acq_date',
-                size='frp',
-                color='frp',
-                size_max=10,
-                title='Wildfire Timeline',
-                projection='natural earth'
-            )
-            fig.add_trace(go.Choropleth(
-                geojson=geojson_data,
-                locations=[feature['properties']['GEOID'] for feature in geojson_data['features']],
-                z=[0] * len(geojson_data['features']),
-                showscale=False,
-                marker_line_width=0.5,
-                marker_line_color='black'
-            ))
-            fig.update_geos(projection_type="natural earth")
-            fig.update_layout(title_text='Wildfires in Colorado (2019 - 2024)', title_x=0.5)
-            fig.show()
+            self.logger.info("Plotting timeline.")
+            fig, ax = plt.subplots()
+            gdf = gpd.read_file(self.state_shapefile_path)
+            gdf = gdf.to_crs(epsg=4326)  # Convert to WGS84
+            gdf.plot(ax=ax, color='white', edgecolor='black')
+            unique_stations = self.aqi_pm25[['Latitude', 'Longitude']].drop_duplicates()
+            for _, row in unique_stations.iterrows():
+                ax.plot(row['Longitude'], row['Latitude'], 'bo')
+            bounds = gdf.total_bounds
+            ax.set_xlim(bounds[0], bounds[2])
+            ax.set_ylim(bounds[1], bounds[3])
+            ax.set_title('Colorado AQI Stations and Wildfires')
+            ax.set_xlabel('Longitude')
+            ax.set_ylabel('Latitude')
+            dates = self.wildfire_data['acq_date'].unique()
+            for date in dates:
+                print(date)
+                ax.set_title(f'Colorado AQI Stations and Wildfires on {date}')
+                wildfires = self.wildfire_data[self.wildfire_data['acq_date'] == date]
+                for _, row in wildfires.iterrows():
+                    ax.plot(row['longitude'], row['latitude'], 'ro')
+                plt.pause(0.5)
+                ax.clear()
+                gdf.plot(ax=ax, color='white', edgecolor='black')
+                for _, row in unique_stations.iterrows():
+                    ax.plot(row['Longitude'], row['Latitude'], 'bo')
+                ax.set_xlim(bounds[0], bounds[2])
+                ax.set_ylim(bounds[1], bounds[3])
+            plt.show()
         except Exception as e:
-            self.logger.error(f"Error plotting timeline with GeoJSON: {e}")
+            self.logger.error(f"Error plotting timeline: {e}")
             raise
 
 if __name__ == "__main__":
@@ -131,5 +133,7 @@ if __name__ == "__main__":
     geo_plots = GeoPlots(ozone_dp, pm25_dp, wildfire_dp, state_shapefile, 2023, 2024)
     gdf = gpd.read_file(geo_plots.state_shapefile_path)
     print(gdf.columns)
+    geo_plots.plot_stations()
+    geo_plots.plot_wildfires()
     geo_plots.plot_timeline()
 
