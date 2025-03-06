@@ -152,9 +152,9 @@ class AirQualityCollector:
 
 
 if __name__ == "__main__":
-    CONFIG_PATH = "/Users/alexvalone/Desktop/DS_Q2/DS_Tools1/Final_Project/DST1-ForestFireAQI/src/config.json"
+    CONFIG_PATH = "config.json"
     START_DATE = datetime(2019, 1, 1)
-    END_DATE = datetime(2024, 12, 31)
+    END_DATE = datetime(2024, 12, 1)
     
     collector = AirQualityCollector(
         config_path=CONFIG_PATH, 

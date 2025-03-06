@@ -283,15 +283,15 @@ class AQIProcessor(BaseProcessor):
         self.logger.info(f"Saved combined AQI data to {combined_path}.")
 
 if __name__ == "__main__":
-    """
-    # Paths and settings
-    wildfire_csv = "data/wildfire_data/FIRMS_data/wildfire_data_sv_2019_2024.csv"
-    aqi_csv = "data/aqi_data/Colorado_AQI_2019_2024.csv"
-    wildfire_output_dir = "data/wildfire_data/wildfire_processed"
-    aqi_output_dir = "data/aqi_data/aqi_processed"
-    county_shapefile = "data/co_shapefile/counties/counties_19.shp"
 
-    start_year = 2023
+    # Paths and settings
+    wildfire_csv = "../data/wildfire_data/FIRMS_data/wildfire_data_sv_2019_2024.csv"
+    aqi_csv = "../data/aqi_data/Colorado_AQI_2019_2024.csv"
+    wildfire_output_dir = "../data/wildfire_data/wildfire_processed/"
+    aqi_output_dir = "../data/aqi_data/aqi_processed/"
+    county_shapefile = "../data/co_shapefile/counties/counties_19.shp"
+
+    start_year = 2019
     end_year = 2024
 
     # Process Wildfire Data
@@ -302,7 +302,7 @@ if __name__ == "__main__":
         output_dir=wildfire_output_dir,
         county_shapefile=county_shapefile
     )
-    #wildfire_processor.process_wildfire(year_range=(start_year, end_year))
+    wildfire_processor.process_wildfire(year_range=(start_year, end_year))
 
     # Load processed wildfire data for AQI processing
     processed_wildfire_csv = os.path.join(
@@ -317,17 +317,16 @@ if __name__ == "__main__":
         output_dir=aqi_output_dir,
         county_shapefile=county_shapefile
     )
-    #aqi_processor.process_aqi(years_to_process=list(range(start_year, end_year + 1)))
+    aqi_processor.process_aqi(years_to_process=list(range(start_year, end_year + 1)))
     
     #save df by pollutant
-    df = pd.read_csv(f"data/aqi_data/aqi_processed/aqi_final_{start_year}_{end_year}.csv")
+    df = pd.read_csv(f"../data/aqi_data/aqi_processed/aqi_final_{start_year}_{end_year}.csv")
     pm25_df = df[df["Parameter"].str.upper() == "PM2.5"]
     ozone_df = df[df["Parameter"].str.upper() == "OZONE"]
-    pm25_df.to_csv(f"pm25_aqi_{start_year}_{end_year}.csv", index=False)
-    ozone_df.to_csv(f"ozone_aqi_{start_year}_{end_year}.csv", index=False)
-"""
+    pm25_df.to_csv(f"../data/aqi_data/aqi_processed/pm25_aqi_{start_year}_{end_year}.csv", index=False)
+    ozone_df.to_csv(f"../data/aqi_data/aqi_processed/ozone_aqi_{start_year}_{end_year}.csv", index=False)
     # Load the PM2.5 AQI data
-    df = pd.read_csv("data/aqi_data/aqi_processed/pm25_aqi_2023_2024.csv")
+    df = pd.read_csv("../data/aqi_data/aqi_processed/pm25_aqi_2019_2024.csv")
 
     # Ensure Date is datetime
     df['Date'] = pd.to_datetime(df['Date'])
