@@ -144,7 +144,7 @@ class StatPlots:
                     break
         self.wildfire_data = self.wildfire_data.dropna(subset=['County'])
 
-    def timeseries_processing(self):
+    #def timeseries_processing(self):
 
 
 
