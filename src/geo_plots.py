@@ -126,10 +126,11 @@ class GeoPlots:
             raise
 
 if __name__ == "__main__":
-    ozone_dp = '../data/aqi_data/aqi_processed/ozone_aqi_2019_2024.csv'
-    pm25_dp = '../data/aqi_data/aqi_processed/pm25_aqi_2019_2024.csv'
-    wildfire_dp = '../data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024.csv'
-    state_shapefile = '../data/co_shapefile/counties/counties_19.shp'
+    #Used 30 day rolling average for AQI
+    ozone_dp = 'data/aqi_data/aqi_processed/ozone_aqi_2019_2024_30.csv'
+    pm25_dp = 'data/aqi_data/aqi_processed/pm25_aqi_2019_2024_30.csv'
+    wildfire_dp = 'data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024.csv'
+    state_shapefile = 'data/co_shapefile/counties/counties_19.shp'
     geo_plots = GeoPlots(ozone_dp, pm25_dp, wildfire_dp, state_shapefile, 2023, 2024)
     gdf = gpd.read_file(geo_plots.state_shapefile_path)
     print(gdf.columns)
