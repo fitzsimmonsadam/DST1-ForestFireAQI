@@ -576,6 +576,38 @@ class Visualizer:
             self.logger.error(f"Error creating seasonal map: {e}")
             raise
 
+    def create_animated_wf_map(self, year_filter=None):
+        """
+        Creates a single animated wildfire heatmap for the specified year (monthly).
+        Uses the existing add_wildfire_animated_heatmap() method.
+        """
+        try:
+            self.logger.info("Creating an animated wildfire heatmap map.")
+
+            # 1) Initialize the Folium map
+            m = folium.Map(location=[39.5501, -105.7821], zoom_start=6, tiles='cartodbpositron')
+
+            # 2) If user provided a year filter, reduce the wildfire data
+            if year_filter:
+                filtered_wildfires = self.wildfire_data[self.wildfire_data["Date"].str.startswith(str(year_filter))]
+            else:
+                filtered_wildfires = self.wildfire_data
+
+            # 3) Add the monthly animated wildfire heatmap to the map
+            self.add_wildfire_animated_heatmap(m, filtered_wildfires)
+
+            # 4) Optional: If you want a layer control (in case you add more layers)
+            folium.LayerControl(collapsed=True).add_to(m)
+
+            # 5) Save the map
+            year_suffix = f"_{year_filter}" if year_filter else ""
+            map_path = os.path.join(self.output_dir, f"animated_wildfire_heatmap{year_suffix}.html")
+            m.save(map_path)
+            self.logger.info(f"Animated wildfire heatmap map saved to {map_path}.")
+        except Exception as e:
+            self.logger.error(f"Error creating animated wildfire map: {e}")
+            raise
+
 if __name__ == "__main__":
     # Define color map for your AQI_Category
     aqi_color_map = {
@@ -594,4 +626,5 @@ if __name__ == "__main__":
 
     visualizer = Visualizer(aqi_pm25_path=pm25_dp, aqi_ozone_path=ozone_dp, wildfire_data_path=wildfire_dp)
     # Just call create_monthly_map with a year filter to see combined monthly data.
-    visualizer.create_seasonal_map(year_filter=2020)
+    #visualizer.create_seasonal_map(year_filter=2020)
+    visualizer.create_animated_wf_map(year_filter=2020)
