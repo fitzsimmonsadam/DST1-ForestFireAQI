@@ -327,7 +327,7 @@ if __name__ == "__main__":
     aqi_processor.process_aqi(years_to_process=list(range(start_year, end_year+1)))
     
     #save df by pollutant
-    df = pd.read_csv(f"data/aqi_data/aqi_processed/aqi_final_{start_year}_{end_year}.csv")
+    df = pd.read_csv(f"data/aqi_data/aqi_processed/aqi_final_{start_year}_{end_year}_30.csv")
     pm25_df = df[df["Parameter"].str.upper() == "PM2.5"]
     ozone_df = df[df["Parameter"].str.upper() == "OZONE"]
     pm25_df.to_csv(f"data/aqi_data/aqi_processed/pm25_aqi_{start_year}_{end_year}.csv", index=False)
