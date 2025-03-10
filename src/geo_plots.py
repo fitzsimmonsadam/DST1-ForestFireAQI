@@ -17,10 +17,11 @@ class GeoPlots:
         self.state_shapefile_path = state_shapefile
 
         logging.basicConfig(
-            filename=os.path.join(os.path.dirname(__file__), '../logs/geo_plots.log'),
+            filename = 'data/logs/geo_plots.log',
             level=logging.INFO,
             format='%(asctime)s - %(levelname)s - %(message)s'
-        )
+            )
+        
         self.logger = logging.getLogger(__name__)
         self.logger.info("GeoPlots initialized.")
         self.logger.info(f"PM2.5 data path: {pm25_data_path}")
@@ -55,7 +56,7 @@ class GeoPlots:
             <h3 align="center" style="font-size:20px"><b>Air Quality Monitoring Stations</b></h3>
             '''
             m.get_root().html.add_child(folium.Element(title_html))
-            m.save('../visuals/aqi_stations_map.html')
+            m.save('visuals/aqi_stations_map.html')
             self.logger.info(f"Map saved to ../visuals/aqi_stations_map.html")
             plt.show()
             self.logger.info(f"Opening map in local browser")
@@ -81,11 +82,11 @@ class GeoPlots:
             m.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
             title_html = f"'<h3 align='center' style='font-size:20px'><b>Wildfires in Colorado ({self.wildfire_data['Year'].min()} - {self.wildfire_data['Year'].max()})</b></h3>'"
             m.get_root().html.add_child(folium.Element(title_html))
-            m.save('../visuals/wildfires_map.html')
-            self.logger.info(f"Map saved to ../visuals/wildfires_map.html")
+            m.save('visuals/wildfires_map.html')
+            self.logger.info(f"Map saved to visuals/wildfires_map.html")
             plt.show()
             self.logger.info(f"Opening map in local browser")
-            webbrowser.open_new_tab(os.getcwd() + '/../visuals/wildfires_map.html')
+            webbrowser.open_new_tab(os.getcwd() + 'visuals/wildfires_map.html')
         except Exception as e:
             self.logger.error(f"Error plotting wildfires: {e}")
             raise
