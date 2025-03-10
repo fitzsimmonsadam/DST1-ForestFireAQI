@@ -299,7 +299,7 @@ if __name__ == "__main__":
     county_shapefile = "data/co_shapefile/counties/counties_19.shp"
 
     start_year = 2019
-    end_year = 2020
+    end_year = 2024
 
     # Process Wildfire Data
     wildfire_processor = WildfireProcessor(
@@ -324,7 +324,7 @@ if __name__ == "__main__":
         output_dir=aqi_output_dir,
         county_shapefile=county_shapefile)
     
-    aqi_processor.process_aqi(years_to_process=list(range(start_year, end_year)))
+    aqi_processor.process_aqi(years_to_process=list(range(start_year, end_year+1)))
     
     #save df by pollutant
     df = pd.read_csv(f"data/aqi_data/aqi_processed/aqi_final_{start_year}_{end_year}.csv")
