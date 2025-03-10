@@ -1,10 +1,9 @@
 import os
 import logging
 import pandas as pd
-import geopandas as gpd
 import folium
 import webbrowser
-from folium.plugins import HeatMap, MarkerCluster
+from folium.plugins import HeatMap, FastMarkerCluster
 
 class Visualizer:
     def __init__(self, aqi_pm25_path, aqi_ozone_path, wildfire_data_path, output_dir='visuals'):
@@ -28,16 +27,31 @@ class Visualizer:
         self.aqi_ozone = pd.read_csv(aqi_ozone_path)
         self.wildfire_data = pd.read_csv(wildfire_data_path)
 
-        # Ensure date format consistency
-        self.wildfire_data['Date'] = pd.to_datetime(self.wildfire_data['Date']).dt.strftime('%Y-%m-%d')
-        self.aqi_pm25["Date"] = pd.to_datetime(self.aqi_pm25["Date"]).dt.strftime('%Y-%m-%d')
-        self.aqi_ozone["Date"] = pd.to_datetime(self.aqi_ozone["Date"]).dt.strftime('%Y-%m-%d')
-    
-    def create_interactive_map(self):
-        """Creates an interactive Folium map with AQI stations, wildfire markers, and heatmaps."""
+        # Ensure all column names are strings
+        self.aqi_pm25.columns = self.aqi_pm25.columns.astype(str)
+        self.aqi_ozone.columns = self.aqi_ozone.columns.astype(str)
+        self.wildfire_data.columns = self.wildfire_data.columns.astype(str)
+
+        # Convert 'Date' to string format, handling errors gracefully
+        self.wildfire_data['Date'] = pd.to_datetime(self.wildfire_data['Date'], errors='coerce').dt.strftime('%Y-%m-%d')
+        self.aqi_pm25["Date"] = pd.to_datetime(self.aqi_pm25["Date"], errors='coerce').dt.strftime('%Y-%m-%d')
+        self.aqi_ozone["Date"] = pd.to_datetime(self.aqi_ozone["Date"], errors='coerce').dt.strftime('%Y-%m-%d')
+
+        # Drop NaN values in essential columns
+        self.wildfire_data.dropna(subset=['latitude', 'longitude', 'Date'], inplace=True)
+        self.aqi_pm25.dropna(subset=['Latitude', 'Longitude', 'AQI'], inplace=True)
+        self.aqi_ozone.dropna(subset=['Latitude', 'Longitude', 'AQI'], inplace=True)
+
+    def create_interactive_map(self, year_filter=None):
+        """
+        Creates an interactive Folium map with AQI stations, wildfire markers, and heatmaps.
+        
+        Args:
+            year_filter (int, optional): If provided, filters data to include only that year.
+        """
         try:
             self.logger.info("Creating interactive Folium map.")
-            
+
             # Initialize Map Centered on Colorado
             m = folium.Map(location=[39.5501, -105.7821], zoom_start=6, tiles='cartodbpositron')
 
@@ -49,65 +63,47 @@ class Visualizer:
             aqi_pm25_heatmap = folium.FeatureGroup(name="PM2.5 Heatmap", overlay=True)
             aqi_ozone_heatmap = folium.FeatureGroup(name="Ozone Heatmap", overlay=True)
 
+            # Apply year filter if provided
+            if year_filter:
+                self.logger.info(f"Filtering data for year: {year_filter}")
+                filtered_wildfires = self.wildfire_data[self.wildfire_data["Date"].str.startswith(str(year_filter))]
+                filtered_pm25 = self.aqi_pm25[self.aqi_pm25["Date"].str.startswith(str(year_filter))]
+                filtered_ozone = self.aqi_ozone[self.aqi_ozone["Date"].str.startswith(str(year_filter))]
+            else:
+                filtered_wildfires = self.wildfire_data
+                filtered_pm25 = self.aqi_pm25
+                filtered_ozone = self.aqi_ozone
+
+            # Limit markers to speed up rendering
+            MAX_MARKERS = 1000
+            sampled_wildfires = filtered_wildfires.sample(n=min(len(filtered_wildfires), MAX_MARKERS), random_state=42)
+            sampled_pm25 = filtered_pm25.sample(n=min(len(filtered_pm25), MAX_MARKERS), random_state=42)
+            sampled_ozone = filtered_ozone.sample(n=min(len(filtered_ozone), MAX_MARKERS), random_state=42)
+
             # Wildfire Marker Cluster
-            wildfire_cluster = MarkerCluster(name="Wildfire Clusters").add_to(wildfire_layer)
-            for _, row in self.wildfire_data.iterrows():
-                folium.CircleMarker(
-                    location=[row['latitude'], row['longitude']],
-                    radius=6,
-                    color="red",
-                    fill=True,
-                    fill_color="red",
-                    fill_opacity=0.7,
-                    popup=folium.Popup(
-                        f"Date: {row['Date']}<br>FRP: {row.get('frp', 'N/A')}", max_width=250),
-                    tooltip=f"Wildfire: {row['Date']}"
-                ).add_to(wildfire_cluster)
+            FastMarkerCluster(sampled_wildfires[['latitude', 'longitude']].values.tolist()).add_to(wildfire_layer)
 
             # Wildfire Heatmap
-            wildfire_heat_data = self.wildfire_data[['latitude', 'longitude']].values.tolist()
+            wildfire_heat_data = sampled_wildfires[['latitude', 'longitude']].values.tolist()
             if wildfire_heat_data:
-                HeatMap(wildfire_heat_data, radius=15, blur=10, gradient={0.2: "yellow", 0.4: "orange", 0.6: "red"}).add_to(wildfire_heatmap)
+                HeatMap(wildfire_heat_data, radius=15, blur=10, gradient={str(0.2): "yellow", str(0.4): "orange", str(0.6): "red"}).add_to(wildfire_heatmap)
 
-            # PM2.5 AQI Station Markers
-            aqi_pm25_cluster = MarkerCluster(name="PM2.5 AQI Clusters").add_to(aqi_pm25_layer)
-            for _, row in self.aqi_pm25.iterrows():
-                folium.CircleMarker(
-                    location=[row['Latitude'], row['Longitude']],
-                    radius=6,
-                    color="blue",
-                    fill=True,
-                    fill_color="blue",
-                    fill_opacity=0.7,
-                    popup=folium.Popup(
-                        f"Date: {row['Date']}<br>AQI: {row['AQI']}", max_width=250),
-                    tooltip=f"PM2.5 AQI: {row['AQI']}"
-                ).add_to(aqi_pm25_cluster)
+            # PM2.5 AQI Stations
+            FastMarkerCluster(sampled_pm25[['Latitude', 'Longitude']].values.tolist()).add_to(aqi_pm25_layer)
 
-            # Ozone AQI Station Markers
-            aqi_ozone_cluster = MarkerCluster(name="Ozone AQI Clusters").add_to(aqi_ozone_layer)
-            for _, row in self.aqi_ozone.iterrows():
-                folium.CircleMarker(
-                    location=[row['Latitude'], row['Longitude']],
-                    radius=6,
-                    color="green",
-                    fill=True,
-                    fill_color="green",
-                    fill_opacity=0.7,
-                    popup=folium.Popup(
-                        f"Date: {row['Date']}<br>AQI: {row['AQI']}", max_width=250),
-                    tooltip=f"Ozone AQI: {row['AQI']}"
-                ).add_to(aqi_ozone_cluster)
+            # Ozone AQI Stations
+            FastMarkerCluster(sampled_ozone[['Latitude', 'Longitude']].values.tolist()).add_to(aqi_ozone_layer)
 
-            # Heatmaps for AQI Density
-            pm25_heat_data = self.aqi_pm25[['Latitude', 'Longitude', 'AQI']].values.tolist()
+            # PM2.5 Heatmap
+            pm25_heat_data = sampled_pm25[['Latitude', 'Longitude', 'AQI']].dropna().values.tolist()
             if pm25_heat_data:
-                HeatMap(pm25_heat_data, radius=12, blur=8, gradient={0.2: "blue", 0.4: "cyan", 0.6: "purple"}).add_to(aqi_pm25_heatmap)
+                HeatMap(pm25_heat_data, radius=12, blur=8, gradient={str(0.2): "blue", str(0.4): "cyan", str(0.6): "purple"}).add_to(aqi_pm25_heatmap)
 
-            ozone_heat_data = self.aqi_ozone[['Latitude', 'Longitude', 'AQI']].values.tolist()
+            # Ozone Heatmap (Fix NaN Values)
+            ozone_heat_data = sampled_ozone[['Latitude', 'Longitude', 'AQI']].dropna().values.tolist()
             if ozone_heat_data:
-                HeatMap(ozone_heat_data, radius=12, blur=8, gradient={0.2: "green", 0.4: "yellow", 0.6: "red"}).add_to(aqi_ozone_heatmap)
-
+                HeatMap(ozone_heat_data, radius=12, blur=8, gradient={str(0.2): "green", str(0.4): "yellow", str(0.6): "red"}).add_to(aqi_ozone_heatmap)
+            
             # Add Layers to Map
             wildfire_layer.add_to(m)
             aqi_pm25_layer.add_to(m)
@@ -120,27 +116,19 @@ class Visualizer:
             folium.LayerControl(collapsed=False).add_to(m)
 
             # Save Map
-            map_path = os.path.join(self.output_dir, "enhanced_wildfire_aqi_map.html")
+            year_suffix = f"_{year_filter}" if year_filter else ""
+            map_path = os.path.join(self.output_dir, f"filtered_wildfire_aqi_map{year_suffix}.html")
             m.save(map_path)
-            self.logger.info(f"Map saved to {map_path}")
-            webbrowser.open_new_tab(os.path.abspath(map_path))
+            self.logger.info(f"Map saved to {map_path}. Open manually: file://{os.path.abspath(map_path)}")
 
         except Exception as e:
             self.logger.error(f"Error creating Folium map: {e}")
             raise
 
 if __name__ == "__main__":
-    # File paths
     ozone_dp = "data/aqi_data/aqi_processed/ozone_aqi_2019_2024_30.csv"
     pm25_dp = "data/aqi_data/aqi_processed/pm25_aqi_2019_2024_30.csv"
     wildfire_dp = "data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024_n.csv"
 
-    # Initialize Visualizer
-    visualizer = Visualizer(
-        aqi_pm25_path=pm25_dp,
-        aqi_ozone_path=ozone_dp,
-        wildfire_data_path=wildfire_dp
-    )
-
-    # Generate Folium Map
-    visualizer.create_interactive_map()
+    visualizer = Visualizer(aqi_pm25_path=pm25_dp, aqi_ozone_path=ozone_dp, wildfire_data_path=wildfire_dp)
+    visualizer.create_interactive_map(year_filter=2020)
