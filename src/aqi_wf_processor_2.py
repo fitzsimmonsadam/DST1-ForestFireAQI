@@ -269,6 +269,7 @@ class AQIProcessor(BaseProcessor):
         # Filter by year range if specified
         years = years_to_process or sorted(df['Year'].unique())
         combined = []
+        window_days=30
         for year in years:
             year_path = os.path.join(self.output_dir, f"aqi_processed_{year}.csv")
             self.logger.info(f"Processing AQI data for year: {year}")   
@@ -277,14 +278,14 @@ class AQIProcessor(BaseProcessor):
             year_df = self.assign_season(year_df)
             year_df = self.categorize_aqi(year_df)
             year_df=  self.wildfire_in_county(year_df)
-            year_df = self.compute_rolling_averages(year_df, window_days=7)
+            year_df = self.compute_rolling_averages(year_df, window_days=window_days)
             # Save processed data
             year_df.to_csv(year_path, index=False)
             self.logger.info(f"Saved AQI data for {year} to {year_path}.")
             combined.append(year_df)
         combined_df = pd.concat(combined)
         print("Final AQI DataFrame columns:", combined_df.columns.tolist())
-        combined_path = os.path.join(self.output_dir, f"aqi_final_{self.start_year}_{self.end_year}.csv")
+        combined_path = os.path.join(self.output_dir, f"aqi_final_{self.start_year}_{self.end_year}_{window_days}.csv")
         combined_df.to_csv(combined_path, index=False)
         self.logger.info(f"Saved combined AQI data to {combined_path}.")
 
@@ -311,9 +312,9 @@ if __name__ == "__main__":
     wildfire_processor.process_wildfire(year_range=(start_year, end_year))
 
     # Load processed wildfire data for AQI processing
-    processed_wildfire_csv = os.path.join(
-        wildfire_output_dir, f"wildfire_processed_{start_year}_{end_year}.csv")
-    #processed_wildfire_csv = "data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024_n.csv"
+    #processed_wildfire_csv = os.path.join(
+    #    wildfire_output_dir, f"wildfire_processed_{start_year}_{end_year}.csv")
+    processed_wildfire_csv = "data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024_n.csv"
     # Process AQI Data
     aqi_processor = AQIProcessor(
         aqi_filepath=aqi_csv,
@@ -331,4 +332,3 @@ if __name__ == "__main__":
     ozone_df = df[df["Parameter"].str.upper() == "OZONE"]
     pm25_df.to_csv(f"data/aqi_data/aqi_processed/pm25_aqi_{start_year}_{end_year}.csv", index=False)
     ozone_df.to_csv(f"data/aqi_data/aqi_processed/ozone_aqi_{start_year}_{end_year}.csv", index=False)
-    
