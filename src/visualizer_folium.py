@@ -450,6 +450,131 @@ class Visualizer:
             self.logger.error(f"Error creating monthly map: {e}")
             raise
 
+    def create_seasonal_map(self, year_filter=None):
+        """
+        Creates a map with one FeatureGroup per season, each containing:
+        - A wildfire heatmap (filtered by that season)
+        - AQI station markers (filtered by that season)
+            * Each station's popup time series only includes data from that season
+        The user can toggle each season in a LayerControl.
+        """
+        try:
+            self.logger.info("Creating a seasonal toggle map (heatmap + station markers).")
+            m = folium.Map(location=[39.5501, -105.7821], zoom_start=6, tiles='cartodbpositron')
+
+            # -------------------------------------------------------
+            # 1) Filter Data by Year (Optional)
+            # -------------------------------------------------------
+            if year_filter:
+                wf_df = self.wildfire_data[
+                    self.wildfire_data["Date"].str.startswith(str(year_filter))
+                ]
+                pm25_df = self.aqi_pm25[
+                    self.aqi_pm25["Date"].str.startswith(str(year_filter))
+                ]
+                ozone_df = self.aqi_ozone[
+                    self.aqi_ozone["Date"].str.startswith(str(year_filter))
+                ]
+            else:
+                wf_df = self.wildfire_data
+                pm25_df = self.aqi_pm25
+                ozone_df = self.aqi_ozone
+
+            # -------------------------------------------------------
+            # 2) Filter by Season - We assume a "Season" column exists
+            # -------------------------------------------------------
+            # If needed, convert "Season" to a string. E.g. df["Season"] = df["Season"].astype(str)
+            wf_df = wf_df.copy()
+            pm25_df = pm25_df.copy()
+            ozone_df = ozone_df.copy()
+
+            # Drop rows missing the Season column if that can happen
+            wf_df.dropna(subset=["Season"], inplace=True)
+            pm25_df.dropna(subset=["Season"], inplace=True)
+            ozone_df.dropna(subset=["Season"], inplace=True)
+
+            # Get unique seasons across all data
+            all_seasons = pd.concat([wf_df["Season"], pm25_df["Season"], ozone_df["Season"]]).unique()
+            # If you want a specific order, define a list like:
+            # season_order = ["Winter", "Spring", "Summer", "Fall"]
+            # Then sort based on that. Otherwise, just sort alphabetically:
+            sorted_seasons = sorted(all_seasons)
+
+            # -------------------------------------------------------
+            # 3) For Each Season, Create a FeatureGroup
+            # -------------------------------------------------------
+            for season_name in sorted_seasons:
+                # Filter each DF to this season
+                wf_season = wf_df[wf_df["Season"] == season_name]
+                pm25_season = pm25_df[pm25_df["Season"] == season_name]
+                ozone_season = ozone_df[ozone_df["Season"] == season_name]
+
+                # Create a FeatureGroup for that season
+                fg_season = folium.FeatureGroup(name=f"{season_name} Season", overlay=True)
+
+                # 3a) Wildfire Heatmap
+                coords = wf_season[["latitude","longitude"]].dropna().values.tolist()
+                coords = [[float(lat), float(lon)] for lat, lon in coords]
+                if coords:
+                    HeatMap(
+                        coords,
+                        radius=15,
+                        blur=10,
+                        gradient={"0.2": "yellow", "0.4": "orange", "0.6": "red"}
+                    ).add_to(fg_season)
+
+                # 3b) PM2.5 Station Markers (Seasonal)
+                grouped_pm25 = pm25_season.groupby(["SiteName","Latitude","Longitude"])
+                for (site, lat, lon), group in grouped_pm25:
+                    # We pass only that season's data to generate_time_series_html
+                    popup_html = self.generate_time_series_html(group.copy(), station_name=site)
+                    iframe = folium.IFrame(html=popup_html, width=500, height=400)
+                    popup = folium.Popup(iframe, max_width=600)
+                    folium.CircleMarker(
+                        location=[float(lat), float(lon)],
+                        radius=6,
+                        color="blue",
+                        fill=True,
+                        fill_color="black",
+                        fill_opacity=0.5,
+                        popup=popup
+                    ).add_to(fg_season)
+
+                # 3c) Ozone Station Markers (Seasonal)
+                grouped_ozone = ozone_season.groupby(["SiteName","Latitude","Longitude"])
+                for (site, lat, lon), group in grouped_ozone:
+                    popup_html = self.generate_time_series_html(group.copy(), station_name=site)
+                    iframe = folium.IFrame(html=popup_html, width=500, height=400)
+                    popup = folium.Popup(iframe, max_width=600)
+                    folium.CircleMarker(
+                        location=[float(lat), float(lon)],
+                        radius=6,
+                        color="green",
+                        fill=True,
+                        fill_color="black",
+                        fill_opacity=0.5,
+                        popup=popup
+                    ).add_to(fg_season)
+
+                # Add the season FeatureGroup to the map
+                fg_season.add_to(m)
+
+            # -------------------------------------------------------
+            # 4) Add a LayerControl so user can toggle each season
+            # -------------------------------------------------------
+            folium.LayerControl(collapsed=False).add_to(m)
+
+            # -------------------------------------------------------
+            # 5) Save the map
+            # -------------------------------------------------------
+            year_suffix = f"_{year_filter}" if year_filter else ""
+            map_path = os.path.join(self.output_dir, f"seasonal_map{year_suffix}.html")
+            m.save(map_path)
+            self.logger.info(f"Seasonal map saved to {map_path}.")
+
+        except Exception as e:
+            self.logger.error(f"Error creating seasonal map: {e}")
+            raise
 
 if __name__ == "__main__":
     # Define color map for your AQI_Category
@@ -469,4 +594,4 @@ if __name__ == "__main__":
 
     visualizer = Visualizer(aqi_pm25_path=pm25_dp, aqi_ozone_path=ozone_dp, wildfire_data_path=wildfire_dp)
     # Just call create_monthly_map with a year filter to see combined monthly data.
-    visualizer.create_monthly_map(year_filter=2020)
+    visualizer.create_seasonal_map(year_filter=2020)
