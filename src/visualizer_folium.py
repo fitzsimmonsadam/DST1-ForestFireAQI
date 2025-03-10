@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import folium
 import webbrowser
-from folium.plugins import HeatMap, HeatMapWithTime, TimestampedGeoJson, FastMarkerCluster
+from folium.plugins import HeatMap, HeatMapWithTime, TimestampedGeoJson, MarkerCluster
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
@@ -25,17 +25,17 @@ class Visualizer:
         self.logger = logging.getLogger(__name__)
         self.logger.info("Visualizer initialized.")
 
-        # Load aqi and wildfire data
+        # Load Data
         self.aqi_pm25 = pd.read_csv(aqi_pm25_path)
         self.aqi_ozone = pd.read_csv(aqi_ozone_path)
         self.wildfire_data = pd.read_csv(wildfire_data_path)
 
-        # Set column names as strings
+        # Ensure column names are strings
         self.aqi_pm25.columns = self.aqi_pm25.columns.astype(str)
         self.aqi_ozone.columns = self.aqi_ozone.columns.astype(str)
         self.wildfire_data.columns = self.wildfire_data.columns.astype(str)
 
-        # Convert dates to datetime then format as YYYY-MM-DD strings
+        # Convert 'Date' to string format (YYYY-MM-DD)
         self.wildfire_data['Date'] = pd.to_datetime(self.wildfire_data['Date'], errors='coerce').dt.strftime('%Y-%m-%d')
         self.aqi_pm25["Date"] = pd.to_datetime(self.aqi_pm25["Date"], errors='coerce').dt.strftime('%Y-%m-%d')
         self.aqi_ozone["Date"] = pd.to_datetime(self.aqi_ozone["Date"], errors='coerce').dt.strftime('%Y-%m-%d')
@@ -45,6 +45,9 @@ class Visualizer:
         self.aqi_pm25.dropna(subset=['Latitude', 'Longitude', 'AQI'], inplace=True)
         self.aqi_ozone.dropna(subset=['Latitude', 'Longitude', 'AQI'], inplace=True)
 
+    # -------------------------------------------------------------------------
+    # Existing Methods
+    # -------------------------------------------------------------------------
     def add_wildfire_full_year_heatmap(self, m, filtered_wildfires):
         """Add a static full-year wildfire heatmap to the map."""
         wf_coords = filtered_wildfires[['latitude', 'longitude']].values.tolist()
@@ -58,7 +61,6 @@ class Visualizer:
         wf['Date'] = pd.to_datetime(wf['Date'])
         wf['Month'] = wf['Date'].dt.strftime('%Y-%m')
         unique_months = sorted(wf['Month'].unique())
-        # Convert each month into a ISO timestamp
         unique_months_iso = [pd.to_datetime(month + "-01").isoformat() for month in unique_months]
         
         wildfire_data_by_month = []
@@ -73,26 +75,41 @@ class Visualizer:
             auto_play=False,
             max_opacity=0.8,
             gradient={"0.2": "yellow", "0.4": "orange", "0.6": "red"}
-            # Note: No extra parameters causing recursion are added here.
         )
         hm_time.add_to(m)
 
-    def add_wildfire_cluster(self, m, filtered_wildfires):
-        """Add wildfire markers as clusters using FastMarkerCluster."""
+    def add_wildfire_cluster_numbered(self, m, filtered_wildfires):
+        """Add wildfire markers as a numbered cluster using MarkerCluster."""
         coords = filtered_wildfires[['latitude', 'longitude']].values.tolist()
         coords = [[float(lat), float(lon)] for lat, lon in coords]
-        FastMarkerCluster(coords).add_to(m)
+        marker_cluster = MarkerCluster(name="Wildfire Cluster")
+        for lat, lon in coords:
+            folium.Marker(location=[lat, lon]).add_to(marker_cluster)
+        marker_cluster.add_to(m)
 
     def generate_time_series_html(self, data, station_name):
         """Generate a time series plot for a station as a base64 PNG embedded in HTML."""
         data['Date'] = pd.to_datetime(data['Date'])
         data = data.sort_values('Date')
-        fig, ax = plt.subplots(figsize=(8, 6))
-        ax.plot(data['Date'], data['AQI'], marker='o', linestyle='-')
-        ax.set_title(station_name)
-        ax.set_xlabel("Date")
-        ax.set_ylabel("AQI")
-        fig.autofmt_xdate()
+
+        fig, ax = plt.subplots(figsize=(8, 6), dpi=100)
+
+        # Add AQI threshold bands
+        ax.axhspan(0, 50, facecolor="#00e400", alpha=0.3)     
+        ax.axhspan(50, 100, facecolor="#ffff00", alpha=0.3)    
+        ax.axhspan(100, 150, facecolor="#ff7e00", alpha=0.3)   
+        ax.axhspan(150, 200, facecolor="#ff0000", alpha=0.3)   
+        ax.axhspan(200, 300, facecolor="#8f3f97", alpha=0.3)   
+        ax.axhspan(300, 500, facecolor="#7e0023", alpha=0.3)   
+        
+        ax.plot(data['Date'], data['AQI'], marker='o', linestyle='-', color="black")
+        ax.set_title(station_name, fontsize=18)
+        ax.set_xlabel("Date", fontsize=14)
+        ax.set_ylabel("AQI", fontsize=14)
+        ax.grid(True)
+        ax.set_ylim(0,250)
+        fig.tight_layout()
+
         buf = BytesIO()
         plt.savefig(buf, format='png', bbox_inches='tight')
         buf.seek(0)
@@ -102,11 +119,11 @@ class Visualizer:
 
     def add_static_aqi_station_markers(self, m, filtered_pm25, filtered_ozone):
         """Add static circle markers for AQI stations with time series popups."""
-        # For PM2.5 stations, group by SiteName, Latitude, and Longitude
         grouped_pm25 = filtered_pm25.groupby(['SiteName', 'Latitude', 'Longitude'])
         for (site, lat, lon), group in grouped_pm25:
             popup_html = self.generate_time_series_html(group.copy(), site)
-            popup = folium.Popup(popup_html, max_width=500)
+            iframe = folium.IFrame(html=popup_html, width=500, height=400)
+            popup = folium.Popup(iframe, max_width=600)
             folium.CircleMarker(
                 location=[float(lat), float(lon)],
                 radius=6,
@@ -116,11 +133,12 @@ class Visualizer:
                 fill_opacity=0.5,
                 popup=popup
             ).add_to(m)
-        # For Ozone stations, group by SiteName, Latitude, and Longitude
+
         grouped_ozone = filtered_ozone.groupby(['SiteName', 'Latitude', 'Longitude'])
         for (site, lat, lon), group in grouped_ozone:
             popup_html = self.generate_time_series_html(group.copy(), site)
-            popup = folium.Popup(popup_html, max_width=500)
+            iframe = folium.IFrame(html=popup_html, width=500, height=400)
+            popup = folium.Popup(iframe, max_width=600)
             folium.CircleMarker(
                 location=[float(lat), float(lon)],
                 radius=6,
@@ -132,13 +150,12 @@ class Visualizer:
             ).add_to(m)
         
     def add_animated_aqi_markers(self, m, filtered_pm25, filtered_ozone):
-        """(Optional) Add animated AQI markers using TimestampedGeoJson.
-           This layer uses monthly timestamps and AQI_Category for colors."""
+        """Add animated AQI markers using TimestampedGeoJson (monthly)."""
         features = []
         def get_station_name(row):
             return row.get('SiteName', f"Station at ({row['Latitude']}, {row['Longitude']})")
     
-        # Process PM2.5 data
+        # PM2.5
         for idx, row in filtered_pm25.iterrows():
             try:
                 date_obj = pd.to_datetime(row['Date']).replace(day=1)
@@ -167,7 +184,7 @@ class Visualizer:
             }
             features.append(feature)
 
-        # Process Ozone data
+        # Ozone
         for idx, row in filtered_ozone.iterrows():
             try:
                 date_obj = pd.to_datetime(row['Date']).replace(day=1)
@@ -202,7 +219,7 @@ class Visualizer:
         }
         ts_aqi = TimestampedGeoJson(
             aqi_geojson,
-            period="P1M",  # Monthly period
+            period="P1M", 
             transition_time=200,
             auto_play=False,
             loop=False,
@@ -210,14 +227,13 @@ class Visualizer:
             date_options='YYYY-MM'
         )
         ts_aqi.add_to(m)
-    
+
     def create_static_map(self, year_filter=None):
-        """Creates a static map with full-year wildfire heatmap and static AQI station markers."""
+        """Existing static map example with a full-year heatmap + static stations."""
         try:
             self.logger.info("Creating the static map.")
             m = folium.Map(location=[39.5501, -105.7821], zoom_start=6, tiles='cartodbpositron')
 
-            # Filter data by year if provided
             if year_filter:
                 filtered_wildfires = self.wildfire_data[self.wildfire_data["Date"].str.startswith(str(year_filter))]
                 filtered_pm25 = self.aqi_pm25[self.aqi_pm25["Date"].str.startswith(str(year_filter))]
@@ -227,20 +243,18 @@ class Visualizer:
                 filtered_pm25 = self.aqi_pm25
                 filtered_ozone = self.aqi_ozone
 
-            # Add static wildfire full-year heatmap
-            wf_heatmap_layer = folium.FeatureGroup(name="Wildfire Full-Year Heatmap", overlay=True)
-            wf_coords = filtered_wildfires[['latitude', 'longitude']].values.tolist()
-            wf_coords = [[float(lat), float(lon)] for lat, lon in wf_coords]
-            HeatMap(wf_coords, radius=15, blur=10, 
-                    gradient={"0.2": "yellow", "0.4": "orange", "0.6": "red"}).add_to(wf_heatmap_layer)
+            # Full-year wildfire heatmap
+            wf_heatmap_layer = folium.FeatureGroup(name="Full Year Wildfire Heatmap", overlay=True)
+            self.add_wildfire_full_year_heatmap(m, filtered_wildfires)
             wf_heatmap_layer.add_to(m)
 
-            # Add static AQI station markers
+            # Static AQI stations
             aqi_station_layer = folium.FeatureGroup(name="Static AQI Station Markers", overlay=True)
             self.add_static_aqi_station_markers(aqi_station_layer, filtered_pm25, filtered_ozone)
             aqi_station_layer.add_to(m)
 
             folium.LayerControl(collapsed=False).add_to(m)
+
             year_suffix = f"_{year_filter}" if year_filter else ""
             map_path = os.path.join(self.output_dir, f"static_map{year_suffix}.html")
             m.save(map_path)
@@ -250,13 +264,11 @@ class Visualizer:
             raise
 
     def create_animated_map(self, year_filter=None):
-        """Creates an animated map with a monthly wildfire heatmap.
-           (Animated AQI markers can be added if desired.)"""
+        """Existing map with monthly wildfire heatmap + optional monthly AQI markers."""
         try:
             self.logger.info("Creating the animated map.")
             m = folium.Map(location=[39.5501, -105.7821], zoom_start=6, tiles='cartodbpositron')
 
-            # Filter data by year if provided
             if year_filter:
                 filtered_wildfires = self.wildfire_data[self.wildfire_data["Date"].str.startswith(str(year_filter))]
                 filtered_pm25 = self.aqi_pm25[self.aqi_pm25["Date"].str.startswith(str(year_filter))]
@@ -266,10 +278,10 @@ class Visualizer:
                 filtered_pm25 = self.aqi_pm25
                 filtered_ozone = self.aqi_ozone
 
-            # Add animated wildfire heatmap
+            # Animated wildfire heatmap
             self.add_wildfire_animated_heatmap(m, filtered_wildfires)
 
-            # (Optional) Add animated AQI markers if needed:
+            # Animated AQI (monthly)
             self.add_animated_aqi_markers(m, filtered_pm25, filtered_ozone)
 
             folium.LayerControl(collapsed=False).add_to(m)
@@ -281,8 +293,166 @@ class Visualizer:
             self.logger.error(f"Error creating animated map: {e}")
             raise
 
+    def create_monthly_map(self, year_filter=None):
+        """
+        Unifies wildfires, PM2.5, and Ozone data into a single TimestampedGeoJson
+        so that one time slider controls all monthly data (Approach One).
+        
+        - Wildfire data is shown as red circle markers (monthly).
+        - PM2.5 and Ozone data are shown as colored markers based on EPA categories (monthly).
+        No heatmap is generated to avoid recursion issues.
+        """
+        try:
+            self.logger.info("Creating a single monthly time slider map (unified approach).")
+            m = folium.Map(location=[39.5501, -105.7821], zoom_start=6, tiles='cartodbpositron')
+
+            # 1) Filter data by year if provided
+            if year_filter:
+                wf_df = self.wildfire_data[self.wildfire_data["Date"].str.startswith(str(year_filter))]
+                pm25_df = self.aqi_pm25[self.aqi_pm25["Date"].str.startswith(str(year_filter))]
+                ozone_df = self.aqi_ozone[self.aqi_ozone["Date"].str.startswith(str(year_filter))]
+            else:
+                wf_df = self.wildfire_data
+                pm25_df = self.aqi_pm25
+                ozone_df = self.aqi_ozone
+
+            # 2) Convert each DataFrame to monthly point features with a "time" property
+            #    We'll unify them in a single list of features.
+            features = []
+
+            # 2a) Wildfire features (no heatmap, just points). We'll color them red.
+            #     Month is the first day of that month for the time slider.
+            for idx, row in wf_df.iterrows():
+                try:
+                    date_obj = pd.to_datetime(row['Date']).replace(day=1)
+                except Exception:
+                    continue
+                time_str = date_obj.isoformat()
+                lat = float(row['latitude'])
+                lon = float(row['longitude'])
+                # Build the feature
+                feat = {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [lon, lat]
+                    },
+                    "properties": {
+                        "time": time_str,
+                        "popup": f"Wildfire on {row['Date']}",
+                        # We can style wildfires as red circle markers
+                        "icon": "circle",
+                        "iconstyle": {
+                            "fillColor": "red",
+                            "fillOpacity": 0.7,
+                            "stroke": False,
+                            "radius": 5
+                        }
+                    }
+                }
+                features.append(feat)
+
+            # 2b) PM2.5 features
+            def get_station_name(row):
+                return row.get('SiteName', f"Station at ({row['Latitude']}, {row['Longitude']})")
+
+            for idx, row in pm25_df.iterrows():
+                try:
+                    date_obj = pd.to_datetime(row['Date']).replace(day=1)
+                except Exception:
+                    continue
+                time_str = date_obj.isoformat()
+                color = aqi_color_map.get(row.get('AQI_Category', "Unknown"), "#000000")
+                station_name = get_station_name(row)
+                lat = float(row['Latitude'])
+                lon = float(row['Longitude'])
+                feat = {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [lon, lat]
+                    },
+                    "properties": {
+                        "time": time_str,
+                        "popup": f"{station_name}<br>PM2.5 AQI: {row['AQI']} "
+                                f"({row.get('AQI_Category', 'Unknown')}) on {row['Date']}",
+                        "icon": "circle",
+                        "iconstyle": {
+                            "fillColor": color,
+                            "fillOpacity": 0.8,
+                            "stroke": False,
+                            "radius": 5
+                        }
+                    }
+                }
+                features.append(feat)
+
+            # 2c) Ozone features
+            for idx, row in ozone_df.iterrows():
+                try:
+                    date_obj = pd.to_datetime(row['Date']).replace(day=1)
+                except Exception:
+                    continue
+                time_str = date_obj.isoformat()
+                color = aqi_color_map.get(row.get('AQI_Category', "Unknown"), "#000000")
+                station_name = get_station_name(row)
+                lat = float(row['Latitude'])
+                lon = float(row['Longitude'])
+                feat = {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [lon, lat]
+                    },
+                    "properties": {
+                        "time": time_str,
+                        "popup": f"{station_name}<br>Ozone AQI: {row['AQI']} "
+                                f"({row.get('AQI_Category', 'Unknown')}) on {row['Date']}",
+                        "icon": "circle",
+                        "iconstyle": {
+                            "fillColor": color,
+                            "fillOpacity": 0.8,
+                            "stroke": False,
+                            "radius": 5
+                        }
+                    }
+                }
+                features.append(feat)
+
+            # 3) Build a single FeatureCollection
+            all_geojson = {
+                "type": "FeatureCollection",
+                "features": features
+            }
+
+            # 4) Create the TimestampedGeoJson layer
+            ts_layer = TimestampedGeoJson(
+                data=all_geojson,
+                period="P1M",          # Step by month
+                transition_time=200,   # Transition speed
+                auto_play=False,
+                loop=False,
+                time_slider_drag_update=False,
+                date_options='YYYY-MM'  # Display "2020-01" type labels
+            )
+            ts_layer.add_to(m)
+
+            # 5) Add a layer control if you want (optional).
+            #    Typically, there's only one time layer, so this is up to you.
+            # folium.LayerControl(collapsed=False).add_to(m)
+
+            # 6) Save the map
+            year_suffix = f"_{year_filter}" if year_filter else ""
+            map_path = os.path.join(self.output_dir, f"unified_monthly_map{year_suffix}.html")
+            m.save(map_path)
+            self.logger.info(f"Monthly unified map saved to {map_path}.")
+        except Exception as e:
+            self.logger.error(f"Error creating monthly map: {e}")
+            raise
+
+
 if __name__ == "__main__":
-    # Global AQI color mapping using AQI_Category values
+    # Define color map for your AQI_Category
     aqi_color_map = {
         "Good": "#00e400",
         "Moderate": "#ffff00",
@@ -292,13 +462,11 @@ if __name__ == "__main__":
         "Hazardous": "#7e0023",
         "Unknown": "#000000"
     }
-    
+
     ozone_dp = "data/aqi_data/aqi_processed/ozone_aqi_2019_2024.csv"
     pm25_dp = "data/aqi_data/aqi_processed/pm25_aqi_2019_2024.csv"
     wildfire_dp = "data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024_n.csv"
 
     visualizer = Visualizer(aqi_pm25_path=pm25_dp, aqi_ozone_path=ozone_dp, wildfire_data_path=wildfire_dp)
-    # Create a static map (with full-year wildfire heatmap and static station markers)
-    visualizer.create_static_map(year_filter=2020)
-    # Create an animated map (with monthly animated wildfire heatmap)
-    #visualizer.create_animated_map(year_filter=2020)
+    # Just call create_monthly_map with a year filter to see combined monthly data.
+    visualizer.create_monthly_map(year_filter=2020)

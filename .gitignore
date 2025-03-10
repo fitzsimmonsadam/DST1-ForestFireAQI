@@ -202,3 +202,7 @@ data/aqi_data/aqi_processed/ozone_aqi_2019_2024_30.csv
 data/aqi_data/aqi_processed/pm25_aqi_2019_2024.csv
 data/aqi_data/aqi_processed/ozone_aqi_2019_2024.csv
 visuals/final_interactive_map_2020.html
+visuals/unified_monthly_map_2020.html
+visuals/combined_monthly_map_2020.html
+visuals/static_map_2020.html
+visuals/static_map_dropdown_2020.html
