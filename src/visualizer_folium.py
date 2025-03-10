@@ -92,7 +92,6 @@ class AQIVisualizer:
                 return
 
         elif len(user_input) == 10:
-            # e.g. '2023-08-01' => single day
             try:
                 date_obj = pd.to_datetime(user_input).date()
                 if not pd.api.types.is_datetime64_any_dtype(merged_df["Date"]):
