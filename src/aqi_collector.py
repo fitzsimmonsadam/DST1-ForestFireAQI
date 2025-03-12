@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 class AirQualityCollector:
     """
-    A class for collecting air quality data from the AirNow API.
+    A class for collecting air quality data from the AirNow API. 
     """
     def __init__(
         self,
@@ -95,8 +95,8 @@ class AirQualityCollector:
         """
         Fetches AQI data within specified date range from AirNow API. 
         Args:
-            start_date (_type_): Data Start Date
-            end_date (_type_): Data End Date
+            start_date (_type_): Start Date
+            end_date (_type_): End Date
         Returns:
             list: aqi data json
         """        
