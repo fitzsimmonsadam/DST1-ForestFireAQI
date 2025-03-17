@@ -9,4 +9,4 @@ Compare values of air quality index (AQI) 
 - By season
 Visualize patterns of air quality during wildfire events
 - Investigate the impact of wildfires on the air quality in Colorado
-![image](https://github.com/user-attachments/assets/26274794-8245-49a0-abca-c43da01081be)
+
