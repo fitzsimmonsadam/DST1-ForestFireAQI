@@ -571,7 +571,7 @@ class Visualizer:
             map_path = os.path.join(self.output_dir, f"seasonal_map{year_suffix}.html")
             m.save(map_path)
             self.logger.info(f"Seasonal map saved to {map_path}.")
-
+            return m
         except Exception as e:
             self.logger.error(f"Error creating seasonal map: {e}")
             raise
