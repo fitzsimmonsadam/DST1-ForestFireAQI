@@ -13,8 +13,8 @@ Research Questions:
   + By year 
   + By season
 
-Visualize patterns of air quality during wildfire events
-- Investigate the impact of wildfires on the air quality in Colorado
+- Visualize patterns of air quality during wildfire events
+  + Investigate the impact of wildfires on the air quality in Colorado
 
 
 
