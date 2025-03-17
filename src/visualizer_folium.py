@@ -604,6 +604,7 @@ class Visualizer:
             map_path = os.path.join(self.output_dir, f"animated_wildfire_heatmap{year_suffix}.html")
             m.save(map_path)
             self.logger.info(f"Animated wildfire heatmap map saved to {map_path}.")
+            return m
         except Exception as e:
             self.logger.error(f"Error creating animated wildfire map: {e}")
             raise
