@@ -10,7 +10,7 @@ import statsmodels.api as sm
 
 class StatPlots:
     """
-    A class to create statistical plots for AQI data and wildfire data.
+    A class to create statistical plots for AQI data and wildfire data
 
     Parameters
     ----------
