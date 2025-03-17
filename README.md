@@ -1,7 +1,7 @@
 # DST1-ForestFireAQI
 ### Analysis of EPA's AQI data in relation to Colorado forest fires
 
- by Alex Valone, Adam Fitzsimmons, Lin Ma
+ by Alex Valone, Adam Fitzsimmons, and Lin Ma
 
 #### Research Questions: 
 - Visualize patterns of air quality over time, 2019 – 2024 
