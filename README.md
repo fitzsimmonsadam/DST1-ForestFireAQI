@@ -20,7 +20,9 @@
 
 #### Datasets: 
 1. The AQI data from AirNow provided by U.S. Environmental Protection Agency (EPA)
-2. The wildfire data from VIIRS provided by NASA's Fire Information for Resource Management System (FIRMS)
+   https://www.epa.gov/outdoor-air-quality-data
+3. The wildfire data from VIIRS provided by NASA's Fire Information for Resource Management System (FIRMS)
+   https://firms.modaps.eosdis.nasa.gov/
 
 
 #### About the folders:
