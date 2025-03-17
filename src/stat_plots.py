@@ -9,14 +9,62 @@ from plotly.subplots import make_subplots
 import statsmodels.api as sm
 
 class StatPlots:
+    """
+    A class to create statistical plots for AQI data and wildfire data.
+
+    Parameters
+    ----------
+    ozone_data_path : str
+        Path to processed ozone AQI data
+    pm25_data_path : str
+        Path to processed PM2.5 AQI data
+    wildfire_data_path : str
+        Path to processed wildfire data
+    state_shapefile : str
+        Path to state shapefile
+    start_year : int
+        Start year for data filtering
+    end_year : int
+        End year for data filtering
+    conf_level : int
+        Confidence level for wildfire data
+    frp_thresh : int
+        FRP threshold for wildfire data
+    """
+            
     def __init__(self, ozone_data_path, pm25_data_path, wildfire_data_path, state_shapefile, start_year=None, end_year=None, conf_level=None, frp_thresh=None):
 
+        """
+        Initializes the StatPlots class with data paths and potential filters
+        
+        Parameters
+        ----------
+        ozone_data_path : str
+            Path to processed ozone AQI data
+        pm25_data_path : str
+            Path to processed PM2.5 AQI data
+        wildfire_data_path : str
+            Path to processed wildfire data
+        state_shapefile : str
+            Path to state shapefile
+        start_year : int
+            Start year for data filtering
+        end_year : int
+            End year for data filtering
+        conf_level : int
+            Confidence level for wildfire data
+        frp_thresh : int
+            FRP threshold for wildfire
+        """
+        
+        # Setting parameters
         self.aqi_pm25_path = pm25_data_path
         self.aqi_ozone_path = ozone_data_path
         self.wildfire_data_path = wildfire_data_path
         self.state_shapefile_path = state_shapefile
         self.conf_level = conf_level
         self.frp_thresh = frp_thresh
+        # Start logging
         logging.basicConfig(
             filename='data/logs/geo_plots.log',
             level=logging.INFO,
@@ -27,13 +75,16 @@ class StatPlots:
         self.logger.info(f"PM2.5 data path: {pm25_data_path}")
         self.logger.info(f"Ozone data path: {ozone_data_path}")
         self.logger.info(f"Wildfire data path: {wildfire_data_path}")
+        # Load in data
         self.aqi_pm25 = pd.read_csv(pm25_data_path)
         self.aqi_ozone = pd.read_csv(ozone_data_path)
         self.wildfire_data = pd.read_csv(wildfire_data_path)
+        # Date standardization
         self.wildfire_data['acq_date'] = pd.to_datetime(self.wildfire_data['Date']).dt.strftime('%Y-%m-%d')
         self.aqi_pm25['Date'] = pd.to_datetime(self.aqi_pm25['Date'])
         self.aqi_ozone['Date'] = pd.to_datetime(self.aqi_ozone['Date'])
         self.wildfire_data['acq_date'] = pd.to_datetime(self.wildfire_data['Date'])
+        # Filter with year, conf level or frp threshold if needed
         if start_year and end_year:
             self.aqi_pm25 = self.aqi_pm25[self.aqi_pm25['Year'].between(start_year, end_year)]
             self.aqi_ozone = self.aqi_ozone[self.aqi_ozone['Year'].between(start_year, end_year)]
@@ -42,20 +93,25 @@ class StatPlots:
             self.wildfire_data = self.wildfire_data[self.wildfire_data['confidence'] >= self.conf_level]
         if self.frp_thresh:
             self.wildfire_data = self.wildfire_data[self.wildfire_data['frp'] >= self.frp_thresh]
-        print(self.wildfire_data[['Date', 'latitude', 'longitude']].head())
 
 
     def avg_timeseries_plots(self):
+        """
+        Plots the average AQI for PM2.5 and Ozone over time, with wildfire incidents marked
+        """
         fig, ax = plt.subplots(2, 1, figsize=(12, 8))
+        # Plot AQI from each parameter
         self.aqi_pm25.groupby('Date')['AQI'].mean().plot(ax=ax[0], title='Average AQI$_{PM2.5}$, All Stations')
         self.aqi_ozone.groupby('Date')['AQI'].mean().plot(ax=ax[1], title='Average AQI$_{Ozone}$, All Stations')
         pm25_avg = self.aqi_pm25.groupby('Date')['Rolling_AQI'].mean()
         ozone_avg = self.aqi_ozone.groupby('Date')['Rolling_AQI'].mean()
+        # Overlay wildfires
         for _, row in self.wildfire_data.iterrows():
             if row['acq_date'] in self.aqi_pm25['Date'].values:
                 ax[0].scatter(row['acq_date'], pm25_avg[pm25_avg.index == row['acq_date']].values[0], color='red')
             if row['acq_date'] in self.aqi_ozone['Date'].values:
                 ax[1].scatter(row['acq_date'], ozone_avg[ozone_avg.index == row['acq_date']].values[0], color='red')
+        # Labeling
         ax[0].scatter([], [], color='red', label='Fire Incident')
         ax[0].legend()
         ax[1].scatter([], [], color='red', label='Fire Incident')
@@ -66,14 +122,19 @@ class StatPlots:
         plt.show()
 
     def station_timeseries_plots(self):
+        """
+        Plots the AQI for PM2.5 and Ozone over time for each station, with wildfire incidents marked
+        """
+        # Get unique stations
         counties = self.aqi_ozone['County'].unique()
         fig = make_subplots(rows=1, cols=1)
-
+        # Plot AQI from each parameter, uses plotly interactive plots
         for idx, county in enumerate(counties):
+            # Pull daily max values
             county_pm25 = self.aqi_pm25[self.aqi_pm25['County'] == county].groupby('Date')['Rolling_AQI'].max().reset_index()
             county_ozone = self.aqi_ozone[self.aqi_ozone['County'] == county].groupby('Date')['Rolling_AQI'].max().reset_index()
             county_wildfires = self.wildfire_data[self.wildfire_data['County'] == county]
-
+            # Add plots for each parameter on each unique station, only if the data exists
             if not county_pm25.empty:
                 fig.add_trace(
                     go.Scatter(x=county_pm25['Date'], y=county_pm25['Rolling_AQI'], mode='lines', name=f'{county} PM2.5',
@@ -100,7 +161,7 @@ class StatPlots:
                                          visible=(idx == 0)))
             else:
                 fig.add_trace(go.Scatter(x=[], y=[], mode='markers', name=f'{county} Wildfire', visible=(idx == 0)))
-
+        # Dropdown buttons for county selection
         dropdown_buttons = [
             dict(
                 label=county,
@@ -134,6 +195,10 @@ class StatPlots:
         fig.show()
 
     def timeseries_processing(self, county=None, year=None):
+        """
+        Decomposes the time series data for PM2.5 and Ozone AQI for a given county and year
+        """
+        # Filtering by year and county if needed
         if county:
             pm25_data = self.aqi_pm25[self.aqi_pm25['County'] == county]
             ozone_data = self.aqi_ozone[self.aqi_ozone['County'] == county]
@@ -145,7 +210,7 @@ class StatPlots:
             ozone_data = ozone_data[ozone_data['Date'].dt.year == year]
         pm25_max = pm25_data.groupby('Date')['Rolling_AQI'].max().fillna(method='ffill')
         ozone_max = ozone_data.groupby('Date')['Rolling_AQI'].max().fillna(method='ffill')
-        print(pm25_max.head())
+        # Decomposotion of pm25, if available
         if pm25_max.empty:
             print(f"No PM2.5 data available for {county} in {year}")
         else:
@@ -157,6 +222,7 @@ class StatPlots:
             pm25_decomposition.resid.plot(ax=ax4, title='Residual')
             plt.tight_layout()
             plt.show()
+        # Decomposition of ozone, if available
         if ozone_max.empty:
             print(f"No Ozone data available for {county} in {year}")
         else:
@@ -173,8 +239,8 @@ if __name__ == "__main__":
     ozone_dp = 'data/aqi_data/aqi_processed/ozone_aqi_2019_2024.csv'
     pm25_dp = 'data/aqi_data/aqi_processed/pm25_aqi_2019_2024.csv'
     wildfire_dp = 'data/wildfire_data/wildfire_processed/wildfire_processed_2019_2024_n.csv'
-    state_shapefile = 'data/co_shapefile/counties/counties_19.shp'
+    state_shapefile = 'data/co_shapefile/counties/counties_19.shSp'
+    # Example usage for 2019-2024 data, with a focus on the Larmier county wildfires in 2020
     stat_plots = StatPlots(ozone_dp, pm25_dp, wildfire_dp, state_shapefile, 2019, 2024, frp_thresh=40)
     stat_plots.station_timeseries_plots()
-    # save plot
     stat_plots.timeseries_processing(county = 'Larimer', year = 2020)
