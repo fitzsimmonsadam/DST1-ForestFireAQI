@@ -1,11 +1,10 @@
 # DST1-ForestFireAQI
 Analysis of EPA's AQI data in relation to Colorado forest fires
-Assessing the Impact of Seasonal Wildfires on Air Quality in Colorado
 
 Visualize patterns of air quality over time, 2019 – 2024 
 
 Identify the patterns of changes in daily air quality by pollutant
-- Two most significant pollutants: Ozone and PM2.5
+-- Two most significant pollutants: Ozone and PM2.5
 
 Compare values of air quality index (AQI) 
 - By year 
