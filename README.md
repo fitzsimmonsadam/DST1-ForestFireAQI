@@ -3,7 +3,7 @@
 
  by Alex Valone, Adam Fitzsimmons, Lin Ma
 
-##### Research Questions: 
+#### Research Questions: 
 - Visualize patterns of air quality over time, 2019 – 2024 
 
 - Identify the patterns of changes in daily air quality by pollutant
