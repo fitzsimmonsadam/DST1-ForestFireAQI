@@ -1,5 +1,6 @@
 # DST1-ForestFireAQI
-Analysis of EPA AQI data in relation to Colorado forest fires
+Analysis of EPA's AQI data in relation to Colorado forest fires
+Assessing the Impact of Seasonal Wildfires on Air Quality in Colorado
 
 Visualize patterns of air quality over time, 2019 – 2024 
 
@@ -12,6 +13,7 @@ Compare values of air quality index (AQI) 
 
 Visualize patterns of air quality during wildfire events
 - Investigate the impact of wildfires on the air quality in Colorado
+
 
 
 Datasets: 
