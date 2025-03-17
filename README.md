@@ -30,6 +30,13 @@ About the folders:
 4. visuals: All visual maps and analysis outputs
 
 
+Main Findings: 
+- PM2.5 is more sensitive to fire events than Ozone, likely better feature
+- AQI followed seasonal trends of being higher in the summer than winter
+
+
+
+
  
 
 
