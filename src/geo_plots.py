@@ -28,7 +28,7 @@ class GeoPlots:
         End year for data filtering
     """
 
-    def __init__(self, ozone_data_path, pm25_data_path, wildfire_data_path, state_shapefile, start_year=None, end_year=None):
+    def __init__(self, ozone_data_path, pm25_data_path, wildfire_data_path, state_shapefile, visuals_path, start_year=None, end_year=None):
         """
         Initialize the GeoPlots class with the given data paths and shapefile path
 
@@ -46,12 +46,15 @@ class GeoPlots:
             Start year for data filtering
         end_year : int
             End year for data filtering
+        visual_path : str
+            Path to save the visual
         """
         # Save filepaths
         self.aqi_pm25_path = pm25_data_path
         self.aqi_ozone_path = ozone_data_path
         self.wildfire_data_path = wildfire_data_path
         self.state_shapefile_path = state_shapefile
+        self.visuals_path = visuals_path
         # Setup logging
         logging.basicConfig(
             filename = 'data/logs/geo_plots.log',
@@ -102,11 +105,11 @@ class GeoPlots:
         '''
         m.get_root().html.add_child(folium.Element(title_html))
         # Save figures
-        m.save('visuals/aqi_stations_map.html')
+        m.save(self.visuals_path + '/aqi_stations_map.html')
         self.logger.info(f"Map saved to ../visuals/aqi_stations_map.html")
-        plt.show()
+        return m
         self.logger.info(f"Opening map in local browser")
-        webbrowser.open_new_tab(os.getcwd() + '/../visuals/aqi_stations_map.html')
+        #webbrowser.open_new_tab(self.visuals_path + '/aqi_stations_map.html')
 
     def plot_wildfires(self):
         """
@@ -131,11 +134,11 @@ class GeoPlots:
         title_html = f"'<h3 align='center' style='font-size:20px'><b>Wildfires in Colorado ({self.wildfire_data['Year'].min()} - {self.wildfire_data['Year'].max()})</b></h3>'"
         m.get_root().html.add_child(folium.Element(title_html))
         # Save map
-        m.save('visuals/wildfires_map.html')
+        m.save(self.visuals_path + '/wildfires_map.html')
         self.logger.info(f"Map saved to visuals/wildfires_map.html")
-        plt.show()
-        self.logger.info(f"Opening map in local browser")
-        webbrowser.open_new_tab(os.getcwd() + 'visuals/wildfires_map.html')
+        return m
+        #self.logger.info(f"Opening map in local browser")
+        #webbrowser.open_new_tab(self.visuals_path + '/aqi_stations_map.html')
 
     def plot_timeline(self):
         """
