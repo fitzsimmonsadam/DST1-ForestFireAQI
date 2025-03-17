@@ -23,6 +23,12 @@ Datasets:
 2. The wildfire data from VIIRS provided by NASA's Fire Information for Resource Management System (FIRMS)
 
 
+About the folders:
+1. data: Include the downloaded data files – AQI and wildfires and the analysis data files
+2. notebooks: the Jupyter Notebook files for data cleaning, exploration, and analysis
+3. src: The python scripts and the json scripts for exploratory data analysis (EDA) and data analysis
+4. visuals: All visual maps and analysis outputs
+
 
  
 
