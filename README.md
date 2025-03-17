@@ -18,19 +18,19 @@
 
 
 
-Datasets: 
+#### Datasets: 
 1. The AQI data from AirNow provided by U.S. Environmental Protection Agency (EPA)
 2. The wildfire data from VIIRS provided by NASA's Fire Information for Resource Management System (FIRMS)
 
 
-About the folders:
+#### About the folders:
 1. data: Include the downloaded data files – AQI and wildfires and the analysis data files
 2. notebooks: the Jupyter Notebook files for data cleaning, exploration, and analysis
 3. src: The python scripts and the json scripts for exploratory data analysis (EDA) and data analysis
 4. visuals: All visual maps and analysis outputs
 
 
-Main Findings: 
+#### Main Findings: 
 - PM2.5 is more sensitive to fire events than Ozone, likely better feature
 - AQI followed seasonal trends of being higher in the summer than winter
 
