@@ -30,7 +30,6 @@ def derive_county(df, lon_col, lat_col, county_shapefile, final_columns=None):
 
     # Load and prepare counties shapefile
     counties = gpd.read_file(county_shapefile).to_crs(gdf.crs)
-    
     # Drop 'index_right' from previous joins if it exists
     counties = counties.drop(columns=["index_right"], errors="ignore")
     gdf = gdf.drop(columns=["index_right"], errors="ignore")
